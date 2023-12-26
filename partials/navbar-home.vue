@@ -27,12 +27,17 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" aria-label="Offcanvas navbar large">
     <div class="container">
-      <nuxt-link class="navbar-brand" :to="{ name: 'index' }">
-        <app-logo />
-      </nuxt-link>
       <button ref="buttonToggleRef" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-home" aria-controls="navbar-home" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <nuxt-link class="navbar-brand" :to="{ name: 'index' }">
+        <app-logo />
+      </nuxt-link>
+
+      <div class="nav">
+        <DropdownDarkMode class="d-lg-none" />
+      </div>
+
       <div class="offcanvas offcanvas-start text-bg-white" tabindex="-1" id="navbar-home" aria-labelledby="navbar-homeLabel">
         <div class="offcanvas-header">
           <nuxt-link class="navbar-brand" @click="onclickhandler" :to="{ name: 'index' }">

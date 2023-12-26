@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useDarkMode } from '@/stores/useDarkMode';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const darkModeStore = useDarkMode();
 const isDarkModeEnabled: ComputedRef<boolean> = computed(() => darkModeStore.getIsDarkMode);
@@ -84,6 +84,7 @@ export default {
 .darkmode-toggler {
   a {
     --bs-navbar-nav-link-padding-x: .5rem;
+    --bs-nav-link-padding-x: .5rem;
     --bs-navbar-nav-link-padding-y: 0;
 
     font-size: .875rem;
