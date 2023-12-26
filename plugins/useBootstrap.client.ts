@@ -10,15 +10,15 @@ export default defineNuxtPlugin(({ provide, app }) => {
   provide('bootstrap', bootstrap);
 
   // Auto Config Popover and tooltip
-  if (process.client) {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
 
-    popoverTriggerList.forEach((tooltip) => {
-      new bootstrap.Popover(tooltip);
+  popoverTriggerList.forEach((popover) => {
+    new bootstrap.Popover(popover);
+  });
+  tooltipTriggerList.forEach((tooltip) => {
+    new bootstrap.Tooltip(tooltip, {
+      trigger: 'hover',
     });
-    tooltipTriggerList.forEach((tooltip) => {
-      new bootstrap.Tooltip(tooltip);
-    });
-  }
+  });
 });

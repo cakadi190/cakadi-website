@@ -71,7 +71,7 @@ export default {
 
 <template>
   <li class="nav-item darkmode-toggler">
-    <a href="#" @click="toggleDarkMode" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="CTRL + SHIFT + D" class="nav-link">
+    <a href="#" @click="toggleDarkMode" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Press CTRL + SHIFT + D" class="nav-link">
       <Icon v-if="isDarkModeEnabled" name="solar:cloudy-moon-bold-duotone" />
       <Icon v-if="!isDarkModeEnabled" name="solar:sun-bold-duotone" />
 
@@ -84,7 +84,6 @@ export default {
 .darkmode-toggler {
   a {
     --bs-navbar-nav-link-padding-x: .5rem;
-    --bs-nav-link-padding-x: .5rem;
     --bs-navbar-nav-link-padding-y: 0;
 
     font-size: .875rem;
@@ -106,6 +105,13 @@ export default {
 
     &:focus-visible {
       box-shadow: 0 0 0 0.25rem rgba(var(--bs-secondary-rgb), 0.125);
+    }
+
+    @media screen and (max-width: 768px) {
+      --bs-nav-link-padding-x: .25rem;
+      font-size: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
     }
 
     @at-root [data-bs-theme=dark] & {

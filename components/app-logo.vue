@@ -16,7 +16,7 @@ const props = withDefaults(
   defineProps<LogoInterface>(), 
   {
     height: 32,
-    width: 'auto',
+    width: 147.59,
   }
 );
 </script>
