@@ -9,7 +9,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-icon',
     '@pinia/nuxt',
+    'nuxt-simple-sitemap',
   ],
+
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
 
   runtimeConfig: {
     public: {
@@ -18,6 +23,15 @@ export default defineNuxtConfig({
       API_URL: process.env.API_URL,
       APP_URL: process.env.APP_URL,
     },
+  },
+
+  // ====================== Sitemap Loader Setting ====================== //
+  site: {
+    url: process.env.APP_URL,
+  },
+  
+  sitemap: {
+    exclude: ['/admin/**', '/auth/**'],
   },
 
   // ====================== Pinia Loader Setting ====================== //
