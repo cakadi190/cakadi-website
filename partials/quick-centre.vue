@@ -5,6 +5,7 @@ import QuickCentreVersion from './quick-centre-version.vue';
 import QuickCentreGithub from './quick-centre-github.vue';
 
 import { useDarkMode } from '@/stores/useDarkMode';
+import QuickCentreNotify from './quick-centre-notify.vue';
 
 const darkModeStore = useDarkMode();
 const isDarkModeEnabled: ComputedRef<boolean> = computed(() => darkModeStore.getIsDarkMode);
@@ -60,12 +61,16 @@ export default {
               <QuickCentreVersion />
               <QuickCentreGithub />
             </div>
+
+            <QuickCentreNotify class="pt-4" />
           </div>
           <div class="col-md-4 mt-auto">
-            <h2 class="d-flex gap-3 align-items-center lh-1 mb-3">
-              <Icon name="uil:keyboard" />
-              <span>Shortcut</span>
-            </h2>
+            <ClientOnly>
+              <h2 class="d-flex gap-3 align-items-center lh-1 mb-3">
+                <Icon name="uil:keyboard" />
+                <span>Shortcut</span>
+              </h2>
+            </ClientOnly>
             <p>Gunakan tombol jalan pintas navigasi dibawah untuk mempermudah penggunaan tombol aksi pada situs ini.</p>
 
             <table class="table bg-transparent">
@@ -110,21 +115,31 @@ export default {
 
 .grid-panel {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // 50% 50%
+  grid-template-columns: repeat(2, calc(50% - .5rem)); // 50% 50%
   gap: 1rem;
 
   .button-toggler {
     color: var(--bs-dark);
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     gap: .5rem;
     padding: 1rem;
     border-radius: var(--bs-border-radius-lg);
-    background: var(--bs-gray-200);
-
+    background: var(--bs-gray-100);
+    transition: all .2s;
+    
+    &.on {
+      background: var(--bs-gray-200);
+    }
+    
     @at-root [data-bs-theme=dark] & {
-      background: var(--bs-gray-700);
+      background: var(--bs-gray-900);
       color: var(--bs-white);
+
+      &.on {
+        background: var(--bs-gray-700);
+      }
     }
   }
 }

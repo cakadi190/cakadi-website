@@ -1,0 +1,67 @@
+<script setup lang="ts">
+const fakeNotification = [
+  { id: 129837129833, title: 'Sample Notification', description: 'Ini adalah sampel notifikasi yang mana akan digantikan oleh notifikasi sungguhan ketika sudah siap digunakan.', created_at: '2023/12/24 15:31:21' },
+];
+</script>
+
+<script lang="ts">
+export default {
+  name: 'QuickCentreNotify',
+};
+</script>
+
+<template>
+  <div>
+    <h5>Notifikasi</h5>
+
+    <ul class="notify-list">
+      <li v-for="notify in fakeNotification" class="notify-item" :key="notify.id">
+        <div class="notify-header">
+          <div class="notify-title">{{ notify.title }}</div>
+          <div class="notify-time">{{ notify.created_at }}</div>
+        </div>
+        <p class="mb-0">{{ notify.description }}</p>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.notify-list {
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+
+  .notify-item {
+    background: var(--bs-gray-100);
+    padding: 1rem;
+    border-radius: var(--bs-border-radius-lg);
+    
+    @at-root [data-bs-theme=dark] & {
+      background: var(--bs-gray-900);
+      color: var(--bs-white);
+
+      &.on {
+        background: var(--bs-gray-700);
+      }
+    }
+
+    .notify-header {
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+
+      .notify-title {
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+</style>

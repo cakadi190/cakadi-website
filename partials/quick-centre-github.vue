@@ -9,6 +9,6 @@ export default {
     <ClientOnly>
       <Icon class="h4" key="githubIcon" name="octicon:mark-github-16" />
     </ClientOnly>
-    <p key="darkModeText" class="mb-0 align-middle lh-1">Github</p>
+    <p key="darkModeText" class="lh-1 mb-0 align-middle text-truncate">Github</p>
   </a>
 </template>

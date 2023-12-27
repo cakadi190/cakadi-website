@@ -35,11 +35,11 @@ export default {
 </script>
 
 <template>
-  <a href="#" ref="toggleRef" @click="toggleDarkMode" class="button-toggler">
+  <a href="#" ref="toggleRef" @click="toggleDarkMode" :class="{'button-toggler': true, 'on': isDarkModeEnabled}">
     <ClientOnly>
       <Icon class="h4" v-if="isDarkModeEnabled" key="darkModeIconMoon" name="solar:moon-stars-bold" />
       <Icon class="h4" v-else key="darkModeIconSun" name="solar:sun-bold" />
     </ClientOnly>
-    <p key="darkModeText" class="mb-0 align-middle lh-1">Dark Mode: {{ isDarkModeEnabled ? 'On' : 'Off' }}</p>
+    <p key="darkModeText" class="lh-1 mb-0 align-middle text-truncate">Dark Mode: {{ isDarkModeEnabled ? 'On' : 'Off' }}</p>
   </a>
 </template>

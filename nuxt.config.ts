@@ -2,13 +2,31 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/styles/app.scss'],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-svgo', '@nuxt/image', 'nuxt-icon', '@pinia/nuxt'],
   sourcemap: true,
+  modules: [
+    '@nuxtjs/google-fonts',
+    'nuxt-svgo',
+    '@nuxt/image',
+    'nuxt-icon',
+    '@pinia/nuxt',
+    '@vite-pwa/nuxt',
+  ],
 
   runtimeConfig: {
     public: {
       APP_VERSION: process.env.APP_VERSION,
+      TURNSTILE_PUBKEY: process.env.TURNSTILE_PUBKEY,
+      API_URL: process.env.API_URL,
+      APP_URL: process.env.APP_URL,
     },
+  },
+
+  // ====================== PWA Loader Setting ====================== //
+  pwa: {
+    icon: {
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+      source: '~/assets/images/favicon.png',
+    }
   },
 
   // ====================== Pinia Loader Setting ====================== //
