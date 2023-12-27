@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DarkMode from '@/components/dropdown-darkmode.vue';
+
 interface ErrorInterface {
   statusMessage?: string;
   message?: string;
@@ -8,6 +10,8 @@ interface ErrorInterface {
 const props = defineProps<{
   error: ErrorInterface;
 }>();
+
+const year: number = new Date().getFullYear();
 
 const computedTitle = computed(() => {
   if (props.error.statusCode === 404) return 'Halaman Tidak Dapat Ditemukan!';
@@ -47,6 +51,12 @@ useHead({
           <Icon name="solar:home-bold-duotone" />
           <span>Kembali Ke Beranda</span>
         </nuxt-link>
+
+        <p class="mt-4 mb-0">Hak Cipta &copy; 2003-{{ year ?? 2003 }} Catatan Cak Adi, build with <Icon name="ph:heart-straight-duotone" /> by <a href="https://www.dasakreativa.web.id" target="_blank" rel="noopener noreferrer">Dasa Kreativa Studio</a>.</p>
+
+        <ul class="nav mx-auto justify-content-center mt-2">
+          <dark-mode :hide-label="true" />
+        </ul>
       </div>
     </div>
   </main>

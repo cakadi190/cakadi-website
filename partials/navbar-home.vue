@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import DropdownDarkMode from '@/components/dropdown-darkmode.vue';
+import QuickCentre from './quick-centre.vue';
 
 const buttonToggleRef = ref();
 
@@ -9,12 +9,13 @@ const onclickhandler = (event: MouseEvent) => {
 };
 
 const navMenu: NavMenu[] = [
-  { label: 'Home', route: 'index' },
-  { label: 'Tentang Saya', route: 'about-me' },
-  { label: 'Pendidikan Saya', route: 'about-me-education' },
-  { label: 'Penghargaan Saya', route: 'about-me-achievement' },
-  { label: 'Karir Saya', route: 'about-me-career' },
-  { label: 'Hubungi Saya', route: 'contact-me' },
+  { label: 'Beranda', route: 'index' },
+  { label: 'Tentang', route: 'about-me' },
+  { label: 'Pendidikan', route: 'about-me-education' },
+  { label: 'Portfolio', route: 'portofolio' },
+  { label: 'Penghargaan', route: 'about-me-achievement' },
+  { label: 'Karir', route: 'about-me-career' },
+  { label: 'Hubungi', route: 'contact-me' },
 ];
 </script>
 
@@ -25,17 +26,18 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" aria-label="Offcanvas navbar large">
-    <div class="container">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top" aria-label="Offcanvas navbar large">
+    <div class="container-lg">
       <button ref="buttonToggleRef" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-home" aria-controls="navbar-home" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <nuxt-link class="navbar-brand" :to="{ name: 'index' }">
         <app-logo />
       </nuxt-link>
 
       <div class="nav">
-        <DropdownDarkMode class="d-lg-none" />
+        <QuickCentre />
       </div>
 
       <div class="offcanvas offcanvas-start text-bg-white" tabindex="-1" id="navbar-home" aria-labelledby="navbar-homeLabel">
@@ -43,15 +45,13 @@ export default {
           <nuxt-link class="navbar-brand" @click="onclickhandler" :to="{ name: 'index' }">
             <app-logo />
           </nuxt-link>
-          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close" />
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav gap-1 gap-md-0 align-items-md-center justify-content-end flex-grow-1 pe-0 pe-md-3">
+          <ul class="navbar-nav gap-1 gap-md-0 align-items-xl-center justify-content-end flex-grow-1 pe-0 pe-lg-3">
             <li class="nav-item nav-main" v-for="menu in navMenu" :key="menu.label">
               <nuxt-link class="nav-link" @click="onclickhandler" active-class="active" aria-current="page" :to="{ name: menu.route }">{{ menu.label }}</nuxt-link>
             </li>
-
-            <DropdownDarkMode class="d-none d-md-none d-lg-inline ms-2" />
           </ul>
         </div>
       </div>
@@ -103,8 +103,8 @@ export default {
     &:hover::after {
       width: 35%;
     }
-    
-    @media screen and (max-width: 768px) {
+
+    @media screen and (max-width: 992px) {
       --bs-nav-link-padding-y: .5rem;
       --bs-nav-link-padding-x: 1rem;
 
@@ -113,7 +113,7 @@ export default {
       &:hover::after {
         width: 0;
       }
-      
+
       &:hover {
         color: var(--bs-primary);
         background: rgba(var(--bs-primary-rgb), .25);

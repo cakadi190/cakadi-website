@@ -1,7 +1,13 @@
 .dropdown {
   &-menu {
-    --bs-dropdown-padding-y: 1rem;
-    --bs-dropdown-padding-x: 1rem;
+    --bs-dropdown-padding-y: .5rem;
+    --bs-dropdown-padding-x: .5rem;
+  }
+
+  &-item {
+    --bs-dropdown-item-padding-y: .625rem;
+    --bs-dropdown-item-padding-x: .875rem;
+    border-radius: $border-radius-lg;
   }
 
   &.caret-off, .no-caret {

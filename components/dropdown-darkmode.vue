@@ -1,46 +1,16 @@
 <script lang="ts" setup>
 import { useDarkMode } from '@/stores/useDarkMode';
-import Swal from 'sweetalert2';
 
 const darkModeStore = useDarkMode();
 const isDarkModeEnabled: ComputedRef<boolean> = computed(() => darkModeStore.getIsDarkMode);
 
-/**
- * Handles the keydown event and checks for the Ctrl + Shift + D combination.
- *
- * @param {KeyboardEvent} event - The keyboard event object.
- */
-const handleKeyDown = (event: KeyboardEvent) => {
-  event.preventDefault();
+interface ToggleDarkModeInterface {
+  hideLabel?: boolean;
+}
 
-  if (event.ctrlKey && event.shiftKey) {
-    if (event.key === 'D') { darkModeStore.toggleDarkMode(); }
-    else if (event.key === 'R') { window.location.reload(); }
-    else if (event.key === 'I') {
-      Swal.fire({
-        icon: 'error',
-        title: 'Maaf! Aksi Dibekukan!',
-        text: 'Maaf, aksi tersebut tidak dapat dilakukan. Karena dilarang oleh administrator situs!',
-      });
-    } else {
-      console.log('Ctrl + Shift + ' + event.key + ' pressed');
-    }
-  }
-};
-
-/**
- * Attaches the keydown event listener when the component is mounted.
- */
-const attachEventListener = () => {
-  window.addEventListener('keydown', handleKeyDown);
-};
-
-/**
- * Detaches the keydown event listener when the component is unmounted.
- */
-const detachEventListener = () => {
-  window.removeEventListener('keydown', handleKeyDown);
-};
+const props = withDefaults(defineProps<ToggleDarkModeInterface>(), {
+  hideLabel: false,
+});
 
 /**
  * Toggles the dark mode.
@@ -55,11 +25,6 @@ const toggleDarkMode = (event: MouseEvent): void => {
 
 onMounted(() => {
   darkModeStore.initializeDarkMode();
-  attachEventListener();
-});
-
-onUnmounted(() => {
-  detachEventListener();
 });
 </script>
 
@@ -71,11 +36,11 @@ export default {
 
 <template>
   <li class="nav-item darkmode-toggler">
-    <a href="#" @click="toggleDarkMode" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Press CTRL + SHIFT + D" class="nav-link">
+    <a href="#" @click="toggleDarkMode" title="Press CTRL + SHIFT + D" class="nav-link">
       <Icon v-if="isDarkModeEnabled" name="solar:cloudy-moon-bold-duotone" />
       <Icon v-if="!isDarkModeEnabled" name="solar:sun-bold-duotone" />
 
-      <span class="d-none d-md-none d-lg-inline">Mode Gelap</span>
+      <span :class="{ 'd-none d-md-none d-lg-inline': !props.hideLabel, 'd-none': props.hideLabel }">Mode {{ !isDarkModeEnabled ? 'Terang' : 'Gelap' }}</span>
     </a>
   </li>
 </template>
@@ -83,8 +48,10 @@ export default {
 <style scoped lang="scss">
 .darkmode-toggler {
   a {
-    --bs-navbar-nav-link-padding-x: .5rem;
+    --bs-nav-link-padding-x: .5rem;
     --bs-navbar-nav-link-padding-y: 0;
+    --bs-nav-link-color: var(--bs-dark);
+    --bs-nav-link-hover-color: var(--bs-white);
 
     font-size: .875rem;
     border: 1px solid rgba(var(--bs-dark-rgb), .075);
@@ -107,14 +74,16 @@ export default {
       box-shadow: 0 0 0 0.25rem rgba(var(--bs-secondary-rgb), 0.125);
     }
 
-    @media screen and (max-width: 768px) {
-      --bs-nav-link-padding-x: .25rem;
+    @media screen and (max-width: 992px) {
       font-size: 1rem;
       width: 2.5rem;
       height: 2.5rem;
     }
 
     @at-root [data-bs-theme=dark] & {
+      --bs-nav-link-color: var(--bs-white);
+      --bs-nav-link-hover-color: var(--bs-white);
+
       border-color: rgba(var(--bs-white-rgb), .125);
       background: rgba(var(--bs-white-rgb), .125);
 

@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'bootstrap';
 
 /**
  * Integerate Bootstrap With Nuxt 3

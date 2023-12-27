@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-svgo', '@nuxt/image', 'nuxt-icon', '@pinia/nuxt'],
   sourcemap: true,
 
+  runtimeConfig: {
+    public: {
+      APP_VERSION: process.env.APP_VERSION,
+    },
+  },
+
   // ====================== Pinia Loader Setting ====================== //
   pinia: {
     storesDirs: ['./stores/**'],
