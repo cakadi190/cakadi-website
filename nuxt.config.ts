@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt',
     'nuxt-simple-sitemap',
+    'dayjs-nuxt',
   ],
 
   app: {
@@ -33,6 +34,14 @@ export default defineNuxtConfig({
   
   sitemap: {
     exclude: ['/admin/**', '/auth/**'],
+  },
+  
+  // ====================== DayJS Loader Setting ====================== //
+  dayjs: {
+    locales: ['en', 'id'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'id',
+    defaultTimezone: 'Asia/Jakarta',
   },
 
   // ====================== Pinia Loader Setting ====================== //
