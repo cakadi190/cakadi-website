@@ -50,11 +50,11 @@ export default {
     <div class="offcanvas offcanvas-start" tabindex="-1" id="quickCentreOffcanvas" aria-labelledby="quickCentreOffcanvasLabel">
       <div class="offcanvas-header align-items-center">
         <app-logo />
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div class="offcanvas-body">
         <div class="row main-row flex-column flex-md-row-reverse">
-          <div class="col-md-4">
+          <div class="col-md-4 d-flex flex-column justify-content-between">
             <div class="grid-panel">
               <QuickCentreDarkMode />
               <QuickCentreClock />
@@ -62,9 +62,9 @@ export default {
               <QuickCentreGithub />
             </div>
 
-            <QuickCentreNotify class="pt-4" />
+            <QuickCentreNotify class="pt-4 h-100" />
           </div>
-          <div class="col-md-4 mt-auto">
+          <div class="col-md-4 mt-auto d-none d-md-none d-lg-inline">
             <ClientOnly>
               <h2 class="d-flex gap-3 align-items-center lh-1 mb-3">
                 <Icon name="uil:keyboard" />
@@ -151,13 +151,14 @@ export default {
     justify-content: center;
     gap: .325rem;
     font-size: .875rem;
-    border-radius: var(--bs-border-radius);
+    border-radius: var(--bs-border-radius-lg);
     background: rgba(var(--bs-primary-rgb), .125);
     color: var(--bs-primary);
     min-height: 2rem;
     min-width: 2rem;
+    border: 1px solid rgba(var(--bs-primary-rgb), .25);
 
-    --bs-nav-link-padding-x: .5rem;
+    --bs-nav-link-padding-x: .625rem;
     --bs-nav-link-padding-y: .25rem;
     --bs-navbar-nav-link-padding-x: .5rem;
     --bs-navbar-nav-link-padding-y: .25rem;

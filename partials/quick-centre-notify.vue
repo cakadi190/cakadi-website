@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const fakeNotification = [
   { id: 129837129833, title: 'Sample Notification', description: 'Ini adalah sampel notifikasi yang mana akan digantikan oleh notifikasi sungguhan ketika sudah siap digunakan.', created_at: '2023/12/24 15:31:21' },
+  { id: 28936789243, title: 'Sample Notification Kedua', description: 'Ini adalah sampel notifikasi yang mana akan digantikan oleh notifikasi sungguhan ketika sudah siap digunakan.', created_at: '2023/12/24 15:31:21' },
+  { id: 28936789243, title: 'Sample Notification Kedua', description: 'Ini adalah sampel notifikasi yang mana akan digantikan oleh notifikasi sungguhan ketika sudah siap digunakan.', created_at: '2023/12/24 15:31:21' },
 ];
 </script>
 
@@ -29,10 +31,12 @@ export default {
 <style lang="scss" scoped>
 .notify-list {
   display: flex;
-  gap: .5rem;
+  gap: 1rem;
   flex-direction: column;
   list-style: none;
   padding: 0;
+  margin-bottom: 0;
+  overflow-y: auto;
 
   .notify-item {
     background: var(--bs-gray-100);

@@ -13,7 +13,8 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'fade', mode: 'out-in' },
+    layoutTransition: { name: 'slide', mode: 'out-in' },
   },
 
   runtimeConfig: {
