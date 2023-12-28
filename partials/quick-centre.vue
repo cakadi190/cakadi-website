@@ -54,7 +54,7 @@ export default {
       </div>
       <div class="offcanvas-body">
         <div class="row main-row flex-column flex-md-row-reverse">
-          <div class="col-md-4 d-flex flex-column justify-content-between">
+          <div class="col-md-4 qc-left">
             <div class="grid-panel">
               <QuickCentreDarkMode />
               <QuickCentreClock />
@@ -97,6 +97,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.qc-left {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 96px);
+  overflow: auto;
+}
+
 .offcanvas {
   border: 0;
   backdrop-filter: blur(.25rem);
@@ -172,6 +179,11 @@ export default {
     }
 
     @media screen and (max-width: 768px) {
+    --bs-nav-link-padding-x: .75rem;
+    --bs-nav-link-padding-y: .75rem;
+    --bs-navbar-nav-link-padding-x: .75rem;
+    --bs-navbar-nav-link-padding-y: .75rem;
+
       font-size: 1rem;
     }
   }

@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/styles/app.scss'],
   sourcemap: true,
+
+  webpack: {
+    cssSourceMap: true,
+  },
+
   modules: [
     '@nuxtjs/google-fonts',
     'nuxt-svgo',

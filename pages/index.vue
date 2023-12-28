@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import HeaderHome from '@/partials/pages/index/header.vue';
+
 const runtimeConfig = useRuntimeConfig();
 
 useSeoMeta({
@@ -23,5 +25,5 @@ export default {
 </script>
 
 <template>
-  <div>Hello world</div>
+  <HeaderHome />
 </template>
