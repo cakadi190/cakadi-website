@@ -1,5 +1,27 @@
 <script lang="ts" setup>
-// Fill it here
+import type Swal from 'sweetalert2';
+const { $swal } = useNuxtApp()
+
+/**
+ * Alert before visiting my CV file.
+ * 
+ * @param {MouseEvent} event Handle the event when clicked
+ * @returns void
+ */
+const onClickVisit = (event: MouseEvent) => {
+  event.preventDefault();
+
+  ($swal as Swal).fire({
+    title: 'Informasi!',
+    html: '<em>Curriculum Vitae</em> Saya ini hanya dapat diakses yang sudah memiliki akses (melalui undangan, konfirmasi atau persetujuan dari saya pribadi). Pastikan anda sudah memiliki izin kepada saya.',
+    icon: 'info',
+    confirmButtonText: 'Oke Lanjut'
+  }).then(({ isConfirmed }) => {
+    if(isConfirmed) {
+      window.location.href = "https://drive.google.com/drive/folders/10jcIeNljmmXJYiKYHO58iM-xaAqmN9jE?usp=drive_link";
+    } 
+  });
+}
 </script>
 
 <script lang="ts">
@@ -11,7 +33,7 @@ export default {
 <template>
   <header id="masthead">
     <div class="container">
-      <div class="row">
+      <div class="row flex-column-reverse flex-md-row">
         <div class="col-md-7">
           <h2>Halo rek! 👋 Kenalin nih, namaku…</h2>
           <h1><u>A</u>mir Zuh<u>di</u> Wibowo</h1>
@@ -20,11 +42,13 @@ export default {
           <p class="desc">Fullstack website developer asli dari Bumi Kartonyono Medot Janji (Kabupaten Ngawi, Jawa Timur) yang suka ngulik soal teknologi dan suka jalan-jalan sendirian.</p>
 
           <div class="button-cta-group">
-            <a href="#" class="btn btn-lg btn-primary">Hubungi Saya</a>
-            <a href="#" class="btn btn-lg btn-link">Resume</a>
+            <nuxt-link :to="{ name: 'contact-me' }" class="btn btn-lg btn-primary">Hubungi Saya</nuxt-link>
+            <a href="#" @click="onClickVisit" class="btn btn-lg btn-link">Resume</a>
           </div>
         </div>
-        <div class="col-md-5"></div>
+        <div class="col-md-5">
+          <NuxtImg src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
+        </div>
       </div>
     </div>
   </header>
@@ -90,7 +114,7 @@ export default {
     font-size: 1.125rem;
     line-height: 1.75rem;
     text-align: center;
-    
+
     @media (min-width: 1024px) {
       text-align: left;
       font-size: 1.25rem;

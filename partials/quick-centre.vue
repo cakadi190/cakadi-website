@@ -107,7 +107,7 @@ export default {
 .offcanvas {
   border: 0;
   backdrop-filter: blur(.25rem);
-  background-color: rgba(var(--bs-white-rgb), .625) !important;
+  background-color: rgba(var(--bs-white-rgb), .825) !important;
   min-width: 100%;
   
   @at-root [data-bs-theme=dark] & {

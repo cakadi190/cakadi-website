@@ -26,6 +26,7 @@
     "@nuxt/image": "^1.1.0",
     "@pinia/nuxt": "^0.5.1",
     "@popperjs/core": "^2.11.8",
+    "@sweetalert2/theme-bootstrap-4": "^5.0.15",
     "@types/bootstrap": "^5.2.10",
     "bootstrap": "^5.3.2",
     "nuxt-rfg-icon": "^0.6.4",

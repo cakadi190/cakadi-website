@@ -2,8 +2,9 @@
 const layout = ref();
 
 useHead({
+  title: 'Cak Adi Official Site',
   titleTemplate: (title) => {
-    return title ? `${title} • Cak Adi` : 'Cak Adi';
+    return title ? `${title} • Cak Adi Official Site` : 'Cak Adi Official Site';
   },
 });
 </script>
