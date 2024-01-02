@@ -6,18 +6,14 @@ const runtimeConfig = useRuntimeConfig();
 
 useSeoMeta({
   title: 'Beranda',
-  ogTitle: 'Beranda',
   description: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
   ogDescription: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
-  ogImage: '/images/og-image.jp',
+  ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image',
   ogUrl: runtimeConfig.public.APP_URL,
-  twitterTitle: 'Beranda',
   twitterDescription: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
   twitterImage: '/images/og-image.jpg'
 });
-
-const route = useRoute()
 
 useHead({
   htmlAttrs: {
@@ -31,8 +27,8 @@ useHead({
     }
   ],
   meta: [
-    { property: 'og:title', content: `${route.meta.title} • Cak Adi Official Site` },
-    { property: 'twitter:title', content: `${route.meta.title} • Cak Adi Official Site` },
+    { property: 'og:title', content: `Beranda • Cak Adi Official Site` },
+    { property: 'twitter:title', content: `Beranda • Cak Adi Official Site` },
   ]
 });
 

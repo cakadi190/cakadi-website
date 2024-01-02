@@ -50,6 +50,10 @@ export default defineNuxtConfig({
           type: 'image/ico',
           href: '/favicon.ico'
         },
+      ],
+      meta: [
+        { property: 'og:image', content: '/images/og-image.jpg' },
+        { property: 'twitter:image', content: '/images/og-image.jpg' },
       ]
     }
   },
