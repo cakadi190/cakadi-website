@@ -8,11 +8,11 @@ useSeoMeta({
   title: 'Beranda',
   description: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
   ogDescription: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
-  ogImage: '/images/og-image.jpg',
+  ogImage: `${runtimeConfig.public.APP_URL}/images/og-image.jpg`,
   twitterCard: 'summary_large_image',
   ogUrl: runtimeConfig.public.APP_URL,
   twitterDescription: 'Halo rek! Kenalin nih Adi yang mana adalah seorang website developer asal Bumi Kartonyono.',
-  twitterImage: '/images/og-image.jpg'
+  twitterImage: `${runtimeConfig.public.APP_URL}/images/og-image.jpg`
 });
 
 useHead({
