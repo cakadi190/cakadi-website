@@ -87,6 +87,10 @@ export default {
                   <td class="bg-transparent">Ubah Tema (Gelap / Terang)</td>
                   <td class="bg-transparent text-end" width="35%"><kbd>D</kbd></td>
                 </tr>
+                <tr>
+                  <td class="bg-transparent">Kembali ke Halaman Teratas</td>
+                  <td class="bg-transparent text-end" width="35%"><kbd>B</kbd></td>
+                </tr>
               </tbody>
             </table>
           </div>

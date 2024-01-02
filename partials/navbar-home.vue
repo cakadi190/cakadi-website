@@ -46,7 +46,7 @@ export default {
 <template>
   <nav ref="navbarRef" class="navbar navbar-expand-md navbar-light fixed-top" aria-label="Offcanvas navbar large">
     <div class="container-lg">
-      <button ref="buttonToggleRef" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-home" aria-controls="navbar-home" aria-label="Toggle navigation">
+      <button ref="buttonToggleRef" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-home" aria-controls="navbar-home" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -58,20 +58,12 @@ export default {
         <QuickCentre />
       </div>
 
-      <div class="offcanvas offcanvas-start text-bg-white" tabindex="-1" id="navbar-home" aria-labelledby="navbar-homeLabel">
-        <div class="offcanvas-header">
-          <nuxt-link class="navbar-brand" @click="onclickhandler" :to="{ name: 'index' }">
-            <app-logo />
-          </nuxt-link>
-          <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close" />
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav gap-1 gap-md-0 align-items-xl-center justify-content-end flex-grow-1 pe-0 pe-lg-3">
-            <li class="nav-item nav-main" v-for="menu in navMenu" :key="menu.label">
-              <nuxt-link class="nav-link" @click="onclickhandler" active-class="active" aria-current="page" :to="{ name: menu.route }">{{ menu.label }}</nuxt-link>
-            </li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navbar-home">
+        <ul class="navbar-nav gap-1 mt-3 mt-md-0 gap-md-0 align-items-xl-center justify-content-end flex-grow-1">
+          <li class="nav-item nav-main" v-for="menu in navMenu" :key="menu.label">
+            <nuxt-link class="nav-link" @click="onclickhandler" active-class="active" aria-current="page" :to="{ name: menu.route }">{{ menu.label }}</nuxt-link>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -148,20 +140,30 @@ export default {
 
 .navbar {
   backdrop-filter: blur(1rem);
-  background: rgba($white, 0);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(0);
   transition: all .2s;
+  background: rgba($white, 0);
   
   @at-root [data-bs-theme=dark] & {
     background: rgba($dark, 0);
   }
-  
+
+  @media screen and (max-width: 992px) {
+    background: rgba($white, .8);
+    border-color: $gray-300;
+    
+    @at-root [data-bs-theme=dark] & {
+      border-color: $gray-700;
+      background: rgba($dark, .8);
+    }
+  }
+
   &.scrolled {
     backdrop-filter: blur(1rem);
     background: rgba($white, .8);
     border-color: $gray-300;
-    
+
     @at-root [data-bs-theme=dark] & {
       background: rgba($dark, .8);
       border-color: $gray-700;
