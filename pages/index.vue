@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeaderHome from '@/partials/pages/index/header.vue';
+import FeaturedCardComponent from '@/partials/pages/index/featured.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -26,4 +27,13 @@ export default {
 
 <template>
   <HeaderHome />
+  <FeaturedCardComponent />
 </template>
+
+<style lang="scss" scoped>
+.need-space {
+  min-height: 50vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+</style>

@@ -56,7 +56,7 @@ export default {
     font-size: .875rem;
     border: 1px solid rgba(var(--bs-dark-rgb), .075);
     background: rgba(var(--bs-dark-rgb), .075);
-    border-radius: var(--bs-border-radius-lg);
+    border-radius: $border-radius-lg;
     flex-shrink: 0;
     display: flex;
     align-items: center;

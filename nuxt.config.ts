@@ -8,6 +8,20 @@ export default defineNuxtConfig({
     cssSourceMap: true,
   },
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "bootstrap/scss/functions";
+            @import "bootstrap/scss/mixins";
+            @import "~/assets/styles/core/variables";
+            @import "~/assets/styles/core/variables-dark";`
+          ,
+        }
+      }
+    }
+  },
+
   modules: [
     '@nuxtjs/google-fonts',
     'nuxt-svgo',
@@ -20,7 +34,7 @@ export default defineNuxtConfig({
 
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
-    layoutTransition: { name: 'slide', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
 
   runtimeConfig: {
@@ -36,11 +50,11 @@ export default defineNuxtConfig({
   site: {
     url: process.env.APP_URL,
   },
-  
+
   sitemap: {
     exclude: ['/admin/**', '/auth/**'],
   },
-  
+
   // ====================== DayJS Loader Setting ====================== //
   dayjs: {
     locales: ['en', 'id'],

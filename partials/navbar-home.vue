@@ -2,6 +2,16 @@
 import QuickCentre from './quick-centre.vue';
 
 const buttonToggleRef = ref();
+const navbarRef = ref();
+
+const handleScroll = () => {
+  const scrollY = window.scrollY || window.pageYOffset;
+  if (scrollY > 50) {
+    navbarRef.value.classList.add('scrolled');
+  } else {
+    navbarRef.value.classList.remove('scrolled');
+  }
+};
 
 const onclickhandler = (event: MouseEvent) => {
   event.preventDefault();
@@ -17,6 +27,14 @@ const navMenu: NavMenu[] = [
   { label: 'Karir', route: 'about-me-career' },
   { label: 'Hubungi', route: 'contact-me' },
 ];
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <script lang="ts">
@@ -26,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top" aria-label="Offcanvas navbar large">
+  <nav ref="navbarRef" class="navbar navbar-expand-md navbar-light fixed-top" aria-label="Offcanvas navbar large">
     <div class="container-lg">
       <button ref="buttonToggleRef" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-home" aria-controls="navbar-home" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,7 +79,6 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-toggler {
-
   &,
   &:focus,
   &:focus-within,
@@ -88,16 +105,16 @@ export default {
       right: 0;
       left: 0;
       width: 0;
-      border-radius: var(--bs-border-radius-lg);
+      border-radius: $border-radius-lg;
       height: .25rem;
-      background: var(--bs-primary);
+      background: $primary;
       margin: 0 auto;
       transition: all .2s;
     }
 
     &:hover,
     &.active {
-      color: var(--bs-primary);
+      color: $primary;
     }
     
     &:hover::after {
@@ -108,21 +125,40 @@ export default {
       --bs-nav-link-padding-y: .5rem;
       --bs-nav-link-padding-x: 1rem;
 
-      border-radius: var(--bs-border-radius-lg);
+      border-radius: $border-radius-lg;
 
       &:hover::after {
         width: 0;
       }
 
       &:hover {
-        color: var(--bs-primary);
-        background: rgba(var(--bs-primary-rgb), .25);
+        color: $primary;
+        background: rgba($primary, .25);
       }
       
       &.active, &:focus {
         color: var(--bs-white);
-        background: var(--bs-primary);
+        background: $primary;
       }
     }
   }
-}</style>
+}
+
+.navbar {
+  backdrop-filter: blur(1rem);
+  background: rgba($white, .8);
+  border-bottom: 1px solid transparent;
+  transition: all .2s;
+  
+  @at-root [data-bs-theme=dark] & {
+    background: rgba($dark, .8);
+  }
+  
+  &.scrolled {
+    border-color: $gray-300;
+    @at-root [data-bs-theme=dark] & {
+      border-color: $gray-700;
+    }
+  }
+}
+</style>

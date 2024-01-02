@@ -11,8 +11,9 @@ useHead({
 
 <template>
   <NuxtLoadingIndicator :height="4" :throttle="0" />
-  <NuxtLayout ref="layout" />
-  <NuxtPage />
+  <NuxtLayout ref="layout">
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style>
@@ -22,6 +23,7 @@ useHead({
 .layout-leave-active {
   transition: all 0.4s;
 }
+
 .layout-enter-from,
 .layout-leave-to,
 .page-enter-from,

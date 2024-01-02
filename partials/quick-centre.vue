@@ -132,7 +132,7 @@ export default {
     flex-shrink: 0;
     gap: .5rem;
     padding: 1rem;
-    border-radius: var(--bs-border-radius-lg);
+    border-radius: $border-radius-lg;
     background: var(--bs-gray-100);
     transition: all .2s;
     
@@ -158,12 +158,12 @@ export default {
     justify-content: center;
     gap: .325rem;
     font-size: .875rem;
-    border-radius: var(--bs-border-radius-lg);
-    background: rgba(var(--bs-primary-rgb), .125);
-    color: var(--bs-primary);
+    border-radius: $border-radius-lg;
+    background: rgba($primary, .125);
+    color: $primary;
     min-height: 2rem;
     min-width: 2rem;
-    border: 1px solid rgba(var(--bs-primary-rgb), .25);
+    border: 1px solid rgba($primary, .25);
 
     --bs-nav-link-padding-x: .625rem;
     --bs-nav-link-padding-y: .25rem;
@@ -171,11 +171,11 @@ export default {
     --bs-navbar-nav-link-padding-y: .25rem;
 
     kbd {
-      background-color: var(--bs-primary);
+      background-color: $primary;
     }
 
     &:hover {
-      background: rgba(var(--bs-primary-rgb), .2);
+      background: rgba($primary, .2);
     }
 
     @media screen and (max-width: 768px) {

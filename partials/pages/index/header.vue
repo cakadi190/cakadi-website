@@ -106,8 +106,8 @@ export default {
   }
 
   u {
-    color: var(--bs-primary);
-    text-decoration-color: var(--bs-primary);
+    color: $primary;
+    text-decoration-color: $primary;
   }
 
   .desc {

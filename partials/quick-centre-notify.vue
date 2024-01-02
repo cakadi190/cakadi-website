@@ -42,7 +42,7 @@ export default {
   .notify-item {
     background: var(--bs-gray-100);
     padding: 1rem;
-    border-radius: var(--bs-border-radius-lg);
+    border-radius: $border-radius-lg;
     
     @at-root [data-bs-theme=dark] & {
       background: var(--bs-gray-900);
