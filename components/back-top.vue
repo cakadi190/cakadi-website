@@ -11,13 +11,13 @@ const handleToTop = () => {
 }
 
 const handleKeyPress = (event: KeyboardEvent) => {
-  if (event.key === 'B' && window.scrollY > 200) {
+  if (['b', 'B'].includes(event.key) && window.scrollY > 100) {
     handleToTop();
   }
 }
 
 const handleScroll = () => {
-  showBackToTop.value = window.scrollY > 200;
+  showBackToTop.value = window.scrollY > 100;
 }
 
 // Add scroll and keypress event listeners when the component is mounted
@@ -40,5 +40,38 @@ export default {
 </script>
 
 <template>
-  <button v-if="showBackToTop" @click="handleToTop" class="button">Back to Top</button>
+  <button @click="handleToTop" :class="['button', showBackToTop && 'show']">
+    <Icon name="fa:chevron-up" />
+  </button>
 </template>
+
+<style lang="scss" scoped>
+.button {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-pill $border-radius-pill 0 0;
+  transition: all .2s;
+  margin-bottom: -5rem;
+  opacity: 0;
+  visibility: hidden;
+  background: $primary;
+  z-index: $zindex-dropdown;
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
+  
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    margin-bottom: 0;
+  }
+}
+</style>

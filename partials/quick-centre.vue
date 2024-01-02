@@ -19,7 +19,7 @@ const toggleRef = ref();
  * @returns void
  */
 const handleKeyPress = (event: KeyboardEvent) => {
-  if (['q', 'Q'].includes(event.key)) {
+  if (['q', 'Q', 'esc'].includes(event.key)) {
     toggleRef.value?.click();
   }
 };
@@ -88,7 +88,7 @@ export default {
                   <td class="bg-transparent text-end" width="35%"><kbd>D</kbd></td>
                 </tr>
                 <tr>
-                  <td class="bg-transparent">Kembali ke Halaman Teratas</td>
+                  <td class="bg-transparent">Gulir Halaman Kembali Keatas</td>
                   <td class="bg-transparent text-end" width="35%"><kbd>B</kbd></td>
                 </tr>
               </tbody>

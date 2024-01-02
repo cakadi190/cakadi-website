@@ -48,7 +48,7 @@ export default {
     <div class="inner">
       <div class="container">
         <div class="row flex-column-reverse flex-md-row">
-          <div class="col-md-7 col-lg-6 content">
+          <div class="col-lg-7 col-xxl-6 content">
             <div class="content-main">
               <h2>Halo rek! 👋 Kenalin nih, namaku…</h2>
               <h1><u>A</u>mir Zuh<u>di</u> Wibowo</h1>
@@ -74,7 +74,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-md-5 col-lg-6">
+          <div class="col-lg-5 col-xxl-6">
             <NuxtImg src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
           </div>
         </div>
@@ -171,6 +171,15 @@ export default {
   h2 {
     font-size: 1.875rem;
     font-weight: normal;
+
+    // @media screen and (max-width: 992px) {
+    //   font-size: 1.25rem;
+    //   text-align: center;
+    // }
+
+    @media screen and (max-width: 1600px) {
+      font-size: 1.5rem;
+    }
 
     @media screen and (max-width: 992px) {
       font-size: 1.25rem;
