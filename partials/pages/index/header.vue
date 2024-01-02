@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type Swal from 'sweetalert2';
-const { $swal } = useNuxtApp()
+import type { SweetAlertOptions, SweetAlertResult } from 'sweetalert2';
+const { $swal } = useNuxtApp();
 
 /**
  * Alert before visiting my CV file.
@@ -11,17 +11,30 @@ const { $swal } = useNuxtApp()
 const onClickVisit = (event: MouseEvent) => {
   event.preventDefault();
 
-  ($swal as Swal).fire({
+  $swal.fire({
     title: 'Informasi!',
     html: '<em>Curriculum Vitae</em> Saya ini hanya dapat diakses yang sudah memiliki akses (melalui undangan, konfirmasi atau persetujuan dari saya pribadi). Pastikan anda sudah memiliki izin kepada saya.',
     icon: 'info',
+    reverseButton: false,
+    showCancelButton: true,
+    cancelButtonText: 'Batal',
     confirmButtonText: 'Oke Lanjut'
-  }).then(({ isConfirmed }) => {
-    if(isConfirmed) {
-      window.location.href = "https://drive.google.com/drive/folders/10jcIeNljmmXJYiKYHO58iM-xaAqmN9jE?usp=drive_link";
-    } 
+  } as SweetAlertOptions).then(({ isConfirmed }: SweetAlertResult) => {
+    if (isConfirmed) window.location.href = "https://drive.google.com/drive/folders/10jcIeNljmmXJYiKYHO58iM-xaAqmN9jE?usp=drive_link";
   });
-}
+};
+
+const techStackList = [
+  { icon: 'logos:nuxt-icon', name: 'Nuxt' },
+  { icon: 'logos:vue', name: 'Vue' },
+  { icon: 'logos:bootstrap', name: 'Bootstrap' },
+  { icon: 'logos:wordpress-icon', name: 'WordPress' },
+  { icon: 'logos:laravel', name: 'Laravel' },
+  { type: 'separator' },
+  { icon: 'logos:visual-studio-code', name: 'Visual Studio Code' },
+  { icon: 'logos:figma', name: 'Figma' },
+  { icon: 'logos:adobe-illustrator', name: 'Adobe Illustrator' },
+];
 </script>
 
 <script lang="ts">
@@ -32,22 +45,38 @@ export default {
 
 <template>
   <header id="masthead">
-    <div class="container">
-      <div class="row flex-column-reverse flex-md-row">
-        <div class="col-md-7">
-          <h2>Halo rek! 👋 Kenalin nih, namaku…</h2>
-          <h1><u>A</u>mir Zuh<u>di</u> Wibowo</h1>
-          <p class="subheading">Yang bisa dan biasa dipanggil <strong>Cak Adi</strong>.</p>
+    <div class="inner">
+      <div class="container">
+        <div class="row flex-column-reverse flex-md-row">
+          <div class="col-md-7 col-lg-6 content">
+            <div class="content-main">
+              <h2>Halo rek! 👋 Kenalin nih, namaku…</h2>
+              <h1><u>A</u>mir Zuh<u>di</u> Wibowo</h1>
+              <p class="subheading">Yang bisa dan biasa dipanggil <strong>Cak Adi</strong>.</p>
 
-          <p class="desc">Fullstack website developer asli dari Bumi Kartonyono Medot Janji (Kabupaten Ngawi, Jawa Timur) yang suka ngulik soal teknologi dan suka jalan-jalan sendirian.</p>
+              <p class="desc">Fullstack website developer asli dari Bumi Kartonyono Medot Janji (Kabupaten Ngawi, Jawa Timur) yang suka ngulik soal teknologi dan suka jalan-jalan sendirian.</p>
 
-          <div class="button-cta-group">
-            <nuxt-link :to="{ name: 'contact-me' }" class="btn btn-lg btn-primary">Hubungi Saya</nuxt-link>
-            <a href="#" @click="onClickVisit" class="btn btn-lg btn-link">Resume</a>
+              <div class="button-cta-group">
+                <nuxt-link :to="{ name: 'contact-me' }" class="btn btn-lg btn-primary">Hubungi Saya</nuxt-link>
+                <a href="#" @click="onClickVisit" class="btn btn-lg btn-link">Resume</a>
+              </div>
+            </div>
+            
+            <div class="text-center text-md-start mt-5 mt-md-2 mt-lg-0">
+              <p class="mb-2 mb-md-1">Tech Stack Andalan</p>
+              <div class="stack-list">
+                <template v-for="(stack, index) in techStackList" :key="index">
+                  <div v-if="stack.type !== 'separator'" data-bs-toggle="tooltip" data-bs-placement="top" :title="stack.name">
+                    <Icon width="2rem" height="2rem" :name="stack.icon" />
+                  </div>
+                  <div v-else class="vr mx-2" />
+                </template>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-5">
-          <NuxtImg src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
+          <div class="col-md-5 col-lg-6">
+            <NuxtImg src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
+          </div>
         </div>
       </div>
     </div>
@@ -55,10 +84,50 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.content {
+  @media screen and (min-width: 992px) {
+    min-height: calc(100vh - 7rem);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .content-main {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.stack-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  @media screen and (max-width: 992px) {
+    gap: .5rem;
+    justify-content: center;
+  }
+}
+
 #masthead {
   min-height: 100vh;
-  padding-top: 5rem;
-  padding-bottom: 2rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(226 232 240 / 0.5)' stroke-dasharray='5 3' transform='scale(1%2c -1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+
+  @at-root [data-bs-theme=dark] & {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(226 232 240 / 0.075)' stroke-dasharray='5 3' transform='scale(1%2c -1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+
+  .inner {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    background: linear-gradient(to bottom, transparent 50%, $body-bg 100%);
+
+    @at-root [data-bs-theme=dark] & {
+      background: linear-gradient(to bottom, transparent 50%, $body-bg-dark 100%);
+    }
+  }
 
   .row {
     min-height: calc(100vh - 7rem);
@@ -80,6 +149,10 @@ export default {
     font-weight: bold;
     font-size: 4rem;
     margin-bottom: 0;
+    
+    @media screen and (max-width: 1600px) {
+      font-size: 3rem;
+    }
 
     @media screen and (max-width: 992px) {
       font-size: 2.5rem;

@@ -1,5 +1,5 @@
 <template>
-  <section class="need-space container">
+  <section class="need-space-sm container">
     <div class="row">
       <div class="col-md-4 mb-4 mb-md-0">
         <featured-card 

@@ -15,7 +15,7 @@ const handleScroll = () => {
 
 const onclickhandler = (event: MouseEvent) => {
   event.preventDefault();
-  if(window.innerWidth <= 768) buttonToggleRef.value?.click();
+  if (window.innerWidth <= 768) buttonToggleRef.value?.click();
 };
 
 const navMenu: NavMenu[] = [
@@ -79,6 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-toggler {
+
   &,
   &:focus,
   &:focus-within,
@@ -116,7 +117,7 @@ export default {
     &.active {
       color: $primary;
     }
-    
+
     &:hover::after {
       width: 35%;
     }
@@ -135,8 +136,9 @@ export default {
         color: $primary;
         background: rgba($primary, .25);
       }
-      
-      &.active, &:focus {
+
+      &.active,
+      &:focus {
         color: var(--bs-white);
         background: $primary;
       }
@@ -146,17 +148,22 @@ export default {
 
 .navbar {
   backdrop-filter: blur(1rem);
-  background: rgba($white, .8);
+  background: rgba($white, 0);
   border-bottom: 1px solid transparent;
+  backdrop-filter: blur(0);
   transition: all .2s;
   
   @at-root [data-bs-theme=dark] & {
-    background: rgba($dark, .8);
+    background: rgba($dark, 0);
   }
   
   &.scrolled {
+    backdrop-filter: blur(1rem);
+    background: rgba($white, .8);
     border-color: $gray-300;
+    
     @at-root [data-bs-theme=dark] & {
+      background: rgba($dark, .8);
       border-color: $gray-700;
     }
   }

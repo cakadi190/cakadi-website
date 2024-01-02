@@ -71,7 +71,7 @@ export default {
                 <span>Shortcut</span>
               </h2>
             </ClientOnly>
-            <p>Gunakan tombol jalan pintas navigasi dibawah untuk mempermudah penggunaan tombol aksi pada situs ini.</p>
+            <p>Gunakan tombol jalan pintas navigasi dibawah untuk mempermudah penggunaan tombol aksi pada situs ini. Gunakan tombol ini ketika anda tidak menaruh kursor pada sebuah inputan.</p>
 
             <table class="table bg-transparent">
               <tbody>

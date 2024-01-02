@@ -23,5 +23,5 @@ export default {
 </script>
 
 <template>
-  <div></div>
+  <div class="pt-5 mt-5">Hello world!</div>
 </template>

@@ -23,7 +23,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon.png'
+      href: '/favicon.ico'
     }
   ],
   meta: [
@@ -44,8 +44,10 @@ export default {
 </script>
 
 <template>
-  <HeaderHome />
-  <FeaturedCardComponent />
+  <div id="home-index">
+    <HeaderHome />
+    <FeaturedCardComponent />
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -53,5 +55,11 @@ export default {
   min-height: 50vh;
   padding-top: 5rem;
   padding-bottom: 5rem;
+
+  &-sm {
+    min-height: 25vh;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
 }
 </style>

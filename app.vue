@@ -10,10 +10,12 @@ useHead({
 </script>
 
 <template>
-  <NuxtLoadingIndicator :height="4" :throttle="0" />
-  <NuxtLayout ref="layout">
-    <NuxtPage />
-  </NuxtLayout>
+  <div id="app-roots">
+    <NuxtLoadingIndicator :height="4" :throttle="0" />
+    <NuxtLayout ref="layout">
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 
 <style>
@@ -21,7 +23,8 @@ useHead({
 .page-leave-active,
 .layout-enter-active,
 .layout-leave-active {
-  transition: all 0.4s;
+  transition: all 0.2s;
+  transform: translateY(0);
 }
 
 .layout-enter-from,
@@ -30,5 +33,6 @@ useHead({
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
+  transform: translateY(2rem);
 }
 </style>
