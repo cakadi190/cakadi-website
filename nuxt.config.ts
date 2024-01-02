@@ -34,7 +34,24 @@ export default defineNuxtConfig({
 
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
-    layoutTransition: { name: 'layout', mode: 'out-in' }
+    layoutTransition: { name: 'layout', mode: 'out-in' },
+
+    head: {
+      title: 'Cak Adi Official Site',
+      titleTemplate: (title) => {
+        return title ? `${title} • Cak Adi Official Site` : 'Cak Adi Official Site';
+      },
+      htmlAttrs: {
+        lang: 'id'
+      },
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/ico',
+          href: '/favicon.ico'
+        },
+      ]
+    }
   },
 
   runtimeConfig: {
@@ -75,8 +92,8 @@ export default defineNuxtConfig({
       'JetBrains Mono': true,
       Poppins: true,
     },
+    subsets: ['latin', 'greek'],
     display: 'swap',
-    subsets: 'greek',
     preconnect: true,
     preload: true,
     useStylesheet: true,
