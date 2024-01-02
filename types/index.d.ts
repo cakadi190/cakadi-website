@@ -2,6 +2,7 @@ import type Swal from "sweetalert2";
 
 interface PluginsInjections {
   $swal: Swal;
+  $bootstrap: bootstrap;
 }
 
 declare module '#app' {

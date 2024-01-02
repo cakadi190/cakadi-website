@@ -9,6 +9,14 @@ useHead({
 });
 </script>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'CoreApp',
+})
+</script>
+
 <template>
   <div id="app-roots">
     <NuxtLoadingIndicator :height="4" :throttle="0" />

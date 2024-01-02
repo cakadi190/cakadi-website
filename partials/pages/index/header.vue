@@ -67,7 +67,7 @@ export default {
               <div class="stack-list">
                 <template v-for="(stack, index) in techStackList" :key="index">
                   <div v-if="stack.type !== 'separator'" data-bs-toggle="tooltip" data-bs-placement="top" :title="stack.name">
-                    <Icon width="2rem" height="2rem" :name="stack.icon" />
+                    <Icon width="2rem" height="2rem" :name="stack.icon ?? 'material-symbols:indeterminate-question-box-rounded'" />
                   </div>
                   <div v-else class="vr mx-2" />
                 </template>
