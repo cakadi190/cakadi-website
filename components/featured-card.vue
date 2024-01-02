@@ -100,7 +100,7 @@ export default {
     font-weight: bold;
 
     @at-root [data-bs-theme=dark] & {
-      background: $gray-700;
+      background: $gray-800;
     }
 
     @at-root [data-bs-theme=dark] & {
