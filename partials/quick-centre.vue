@@ -53,48 +53,52 @@ export default {
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div class="offcanvas-body">
-        <div class="row main-row flex-column flex-md-row-reverse">
-          <div class="col-md-4 qc-left">
-            <div class="grid-panel">
-              <QuickCentreDarkMode />
-              <QuickCentreClock />
-              <QuickCentreVersion />
-              <QuickCentreGithub />
+
+        <div class="container-xxl">
+          <div class="row main-row flex-column flex-md-row-reverse">
+            <div class="col-md-4 qc-left">
+              <div class="grid-panel">
+                <QuickCentreDarkMode />
+                <QuickCentreClock />
+                <QuickCentreVersion />
+                <QuickCentreGithub />
+              </div>
+
+              <QuickCentreNotify class="pt-4 h-100" />
             </div>
+            <div class="col-md-4 mt-auto d-none d-md-none d-lg-inline">
+              <ClientOnly>
+                <h2 class="d-flex gap-3 align-items-center lh-1 mb-3">
+                  <Icon name="uil:keyboard" />
+                  <span>Shortcut</span>
+                </h2>
+              </ClientOnly>
+              <p>Gunakan tombol jalan pintas navigasi dibawah untuk mempermudah penggunaan tombol aksi pada situs ini. Gunakan tombol ini ketika anda tidak menaruh kursor pada sebuah inputan.</p>
 
-            <QuickCentreNotify class="pt-4 h-100" />
-          </div>
-          <div class="col-md-4 mt-auto d-none d-md-none d-lg-inline">
-            <ClientOnly>
-              <h2 class="d-flex gap-3 align-items-center lh-1 mb-3">
-                <Icon name="uil:keyboard" />
-                <span>Shortcut</span>
-              </h2>
-            </ClientOnly>
-            <p>Gunakan tombol jalan pintas navigasi dibawah untuk mempermudah penggunaan tombol aksi pada situs ini. Gunakan tombol ini ketika anda tidak menaruh kursor pada sebuah inputan.</p>
-
-            <table class="table bg-transparent">
-              <tbody>
-                <tr>
-                  <td class="bg-transparent">Buka Quick Access</td>
-                  <td class="bg-transparent text-end" width="35%"><kbd>Q</kbd></td>
-                </tr>
-                <tr>
-                  <td class="bg-transparent">Tutup Quick Access</td>
-                  <td class="bg-transparent text-end" width="35%"><kbd>Q</kbd> atau <kbd>Esc</kbd></td>
-                </tr>
-                <tr>
-                  <td class="bg-transparent">Ubah Tema (Gelap / Terang)</td>
-                  <td class="bg-transparent text-end" width="35%"><kbd>D</kbd></td>
-                </tr>
-                <tr>
-                  <td class="bg-transparent">Gulir Halaman Kembali Keatas</td>
-                  <td class="bg-transparent text-end" width="35%"><kbd>B</kbd></td>
-                </tr>
-              </tbody>
-            </table>
+              <table class="table bg-transparent">
+                <tbody>
+                  <tr>
+                    <td class="bg-transparent">Buka Quick Access</td>
+                    <td class="bg-transparent text-end" width="35%"><kbd>Q</kbd></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-transparent">Tutup Quick Access</td>
+                    <td class="bg-transparent text-end" width="35%"><kbd>Q</kbd> atau <kbd>Esc</kbd></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-transparent">Ubah Tema (Gelap / Terang)</td>
+                    <td class="bg-transparent text-end" width="35%"><kbd>D</kbd></td>
+                  </tr>
+                  <tr>
+                    <td class="bg-transparent">Gulir Halaman Kembali Keatas</td>
+                    <td class="bg-transparent text-end" width="35%"><kbd>B</kbd></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </Teleport>

@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import type { SweetAlertOptions, SweetAlertResult } from 'sweetalert2';
+
 const { $swal } = useNuxtApp();
+const darkModeStore = useDarkMode();
+
+const isDarkModeEnabled: ComputedRef<boolean> = computed(() => darkModeStore.getIsDarkMode);
 
 /**
  * Alert before visiting my CV file.
@@ -15,7 +19,7 @@ const onClickVisit = (event: MouseEvent) => {
     title: 'Informasi!',
     html: '<em>Curriculum Vitae</em> Saya ini hanya dapat diakses yang sudah memiliki akses (melalui undangan, konfirmasi atau persetujuan dari saya pribadi). Pastikan anda sudah memiliki izin kepada saya.',
     icon: 'info',
-    reverseButton: false,
+    reverseButtons: true,
     showCancelButton: true,
     cancelButtonText: 'Batal',
     confirmButtonText: 'Oke Lanjut'
@@ -28,8 +32,8 @@ const techStackList = [
   { icon: 'logos:nuxt-icon', name: 'Nuxt' },
   { icon: 'logos:vue', name: 'Vue' },
   { icon: 'logos:bootstrap', name: 'Bootstrap' },
-  { icon: 'logos:wordpress-icon', name: 'WordPress' },
-  { icon: 'logos:laravel', name: 'Laravel' },
+  { icon: 'cib:wordpress', name: 'WordPress', supportDark: true },
+  { icon: 'cib:laravel', name: 'Laravel', supportDark: true },
   { type: 'separator' },
   { icon: 'logos:visual-studio-code', name: 'Visual Studio Code' },
   { icon: 'logos:figma', name: 'Figma' },
@@ -67,7 +71,7 @@ export default {
               <div class="stack-list">
                 <template v-for="(stack, index) in techStackList" :key="index">
                   <div v-if="stack.type !== 'separator'" data-bs-toggle="tooltip" data-bs-placement="top" :title="stack.name">
-                    <Icon width="2rem" height="2rem" :name="stack.icon ?? 'material-symbols:indeterminate-question-box-rounded'" />
+                    <Icon width="2rem" :class="(stack.supportDark && isDarkModeEnabled) && 'text-white'" height="2rem" :name="stack.icon ?? 'material-symbols:indeterminate-question-box-rounded'" />
                   </div>
                   <div v-else class="vr mx-2" />
                 </template>
@@ -104,7 +108,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 1rem;
-  
+
   @media screen and (max-width: 992px) {
     gap: .5rem;
     justify-content: center;
@@ -141,7 +145,7 @@ export default {
     gap: .75rem;
 
     @media screen and (min-width: 992px) {
-      justify-content: start;
+      justify-content: flex-start;
     }
   }
 
@@ -149,7 +153,7 @@ export default {
     font-weight: bold;
     font-size: 4rem;
     margin-bottom: 0;
-    
+
     @media screen and (max-width: 1600px) {
       font-size: 3rem;
     }

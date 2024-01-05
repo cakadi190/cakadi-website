@@ -18,7 +18,7 @@ const handleKeyPress = (event: KeyboardEvent) => {
 
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > 100;
-}
+};
 
 // Add scroll and keypress event listeners when the component is mounted
 onMounted(() => {
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <button @click="handleToTop" :class="['button', showBackToTop && 'show']">
+  <button data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-title="Tekan Huruf B" @click="handleToTop" :class="['button', showBackToTop && 'show']">
     <Icon name="fa:chevron-up" />
   </button>
 </template>
@@ -63,6 +63,7 @@ export default {
   visibility: hidden;
   background: $primary;
   z-index: $zindex-dropdown;
+  color: $white;
 
   &:hover {
     background: darken($primary, 10%);

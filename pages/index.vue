@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HeaderHome from '@/partials/pages/index/header.vue';
 import FeaturedCardComponent from '@/partials/pages/index/featured.vue';
+import AboutMeSectionHome from '@/partials/pages/index/about-me.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -47,6 +48,7 @@ export default {
   <div id="home-index">
     <HeaderHome />
     <FeaturedCardComponent />
+    <AboutMeSectionHome />
   </div>
 </template>
 
