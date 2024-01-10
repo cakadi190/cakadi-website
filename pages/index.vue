@@ -2,6 +2,7 @@
 import HeaderHome from '@/partials/pages/index/header.vue';
 import FeaturedCardComponent from '@/partials/pages/index/featured.vue';
 import AboutMeSectionHome from '@/partials/pages/index/about-me.vue';
+import PortofolioHomeSection from '@/partials/pages/index/portofolio.vue';
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -32,10 +33,6 @@ useHead({
     { property: 'twitter:title', content: `Beranda • Cak Adi Official Site` },
   ]
 });
-
-definePageMeta({
-  layout: 'home'
-});
 </script>
 
 <script lang="ts">
@@ -46,9 +43,10 @@ export default {
 
 <template>
   <div id="home-index">
-    <HeaderHome />
-    <FeaturedCardComponent />
-    <AboutMeSectionHome />
+    <header-home />
+    <featured-card-component />
+    <about-me-section-home />
+    <portofolio-home-section />
   </div>
 </template>
 

@@ -10,10 +10,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   ogUrl: runtimeConfig.public.APP_URL,
 });
-
-definePageMeta({
-  layout: 'home'
-});
 </script>
 
 <template>

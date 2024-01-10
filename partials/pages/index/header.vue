@@ -79,7 +79,7 @@ export default {
             </div>
           </div>
           <div class="col-lg-5 col-xxl-6">
-            <NuxtImg src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
+            <nuxt-img src="/images/fotoku.png" class="w-100" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default {
 <style scoped lang="scss">
 .content {
   @media screen and (min-width: 992px) {
-    min-height: calc(100vh - 7rem);
+    min-height: calc(100dvh - 7rem);
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -116,7 +116,7 @@ export default {
 }
 
 #masthead {
-  min-height: 100vh;
+  min-height: 100dvh;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(226 232 240 / 0.5)' stroke-dasharray='5 3' transform='scale(1%2c -1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 
   @at-root [data-bs-theme=dark] & {
@@ -134,7 +134,7 @@ export default {
   }
 
   .row {
-    min-height: calc(100vh - 7rem);
+    min-height: calc(100dvh - 7rem);
     align-items: center;
     justify-content: center;
   }
@@ -175,11 +175,6 @@ export default {
   h2 {
     font-size: 1.875rem;
     font-weight: normal;
-
-    // @media screen and (max-width: 992px) {
-    //   font-size: 1.25rem;
-    //   text-align: center;
-    // }
 
     @media screen and (max-width: 1600px) {
       font-size: 1.5rem;

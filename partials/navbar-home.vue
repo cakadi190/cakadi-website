@@ -29,6 +29,7 @@ const navMenu: NavMenu[] = [
 ];
 
 onMounted(() => {
+  handleScroll();
   window.addEventListener('scroll', handleScroll);
 });
 

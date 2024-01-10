@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const layout = ref();
-
 useHead({
   title: 'Cak Adi Official Site',
   titleTemplate: (title) => {
@@ -19,8 +17,8 @@ export default defineComponent({
 
 <template>
   <div id="app-roots">
-    <NuxtLoadingIndicator :height="4" :throttle="0" />
-    <NuxtLayout ref="layout">
+    <NuxtLoadingIndicator :height="4" :throttle="200" />
+    <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </div>

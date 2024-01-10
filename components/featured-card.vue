@@ -7,7 +7,7 @@ interface FeaturedCardInterface {
   iconColor?: string;
 }
 
-let {
+const {
   title,
   description,
   iconColor

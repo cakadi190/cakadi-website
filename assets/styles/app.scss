@@ -1,8 +1,16 @@
+/** Core Bootstrap */
 @import './core/bootstrap.scss';
 
+/** Core Component */
 @import 'components';
 
-
+/** Other Styling */
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
 html {
   scroll-behavior: smooth;

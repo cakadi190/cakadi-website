@@ -21,6 +21,12 @@ const props = withDefaults(
 );
 </script>
 
+<script lang="ts">
+export default {
+  name: 'AppLogo',
+};
+</script>
+
 <template>
   <ImageLogoColor v-if="!isDarkModeEnabled" :fontControlled="false" :width="props.width" :height="props.height" />
   <ImageLogoDark v-else :fontControlled="false" :width="props.width" :height="props.height" />

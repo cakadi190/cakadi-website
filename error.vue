@@ -20,7 +20,7 @@ const computedTitle = computed(() => {
 
 const computedMessage = computed(() => {
   if (props.error.statusCode === 404) return 'Halaman yang anda akses saat ini tidak dapat ditemukan. Periksa kembali ejaan url anda supaya tidak tersesat.';
-  else props.error.message;
+  else props.error.statusMessage;
 });
 
 useHead({
@@ -45,7 +45,7 @@ useHead({
       <div class="col-md-6">
         <h1 class="title-page">{{ error.statusCode }}</h1>
         <h2>{{ computedTitle }}</h2>
-        <p>{{ computedMessage }}</p>
+        <p>{{ computedMessage ?? error.message }}</p>
 
         <nuxt-link :to="{ name: 'index' }" class="btn mx-auto btn-primary" v-if="error.statusCode === 404">
           <Icon name="solar:home-bold-duotone" />

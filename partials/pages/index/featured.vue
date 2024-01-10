@@ -5,7 +5,7 @@
         <featured-card 
           title="Cepat & Tanggap" 
           icon-color="#fcd34d"
-          description="Mengerjakan proyek dengan cepat dan tanggap terhadap perubahan"
+          description="Mengerjakan proyek dengan cepat dan tanggap terhadap perubahan dan permintaan."
         >
           <template #icon>
             <Icon :style="{

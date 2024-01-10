@@ -108,7 +108,7 @@ export default {
 .qc-left {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 96px);
+  height: calc(100dvh - 96px);
   overflow: auto;
 }
 
@@ -124,7 +124,7 @@ export default {
 }
 
 .main-row {
-  min-height: calc(100vh - 96px);
+  min-height: calc(100dvh - 96px);
   justify-content: space-between;
 }
 

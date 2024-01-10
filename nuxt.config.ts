@@ -29,8 +29,14 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt',
     'nuxt-simple-sitemap',
-    'dayjs-nuxt',
+    'dayjs-nuxt', 
   ],
+  
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -54,7 +60,8 @@ export default defineNuxtConfig({
       meta: [
         { property: 'og:image', content: '/images/og-image.jpg' },
         { property: 'twitter:image', content: '/images/og-image.jpg' },
-      ]
+        { property: 'twitter:card', content: 'summary_large_image' },
+      ],
     }
   },
 
@@ -64,6 +71,8 @@ export default defineNuxtConfig({
       TURNSTILE_PUBKEY: process.env.TURNSTILE_PUBKEY,
       API_URL: process.env.API_URL,
       APP_URL: process.env.APP_URL,
+      backendUrl: process.env.API_URL,
+      frontendUrl: process.env.APP_URL,
     },
   },
 
@@ -93,6 +102,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Signika: true,
+      'Public Sans': true,
       'JetBrains Mono': true,
       Poppins: true,
     },
