@@ -12,18 +12,18 @@ const { data } = await useLarafetch<Portofolio>(url, {
   transform: (_porto) => (_porto as DefaultResponse<Portofolio>).data as Portofolio,
 });
 
-const computedTitle = computed(() => data?.value?.name).value;
-const computedDesc = computed(() => data?.value?.highlight).value;
-const computedImage = computed(() => data?.value?.gallery && Object.keys(data?.value?.gallery ?? {}).length > 0 ? `${runtimeConfig.public.API_URL}/storage/uploads/${data?.value?.gallery[0]?.image}` : `${runtimeConfig.public.APP_URL}/images/og-image.jpg`).value;
+const computedTitle = computed(() => data?.value?.name);
+const computedDesc = computed(() => data?.value?.highlight);
+const computedImage = computed(() => data?.value?.gallery && Object.keys(data?.value?.gallery ?? {}).length > 0 ? `${runtimeConfig.public.API_URL}/storage/uploads/${data?.value?.gallery[0]?.image}` : `${runtimeConfig.public.APP_URL}/images/og-image.jpg`);
 
 useSeoMeta({
-  title: computedTitle,
-  ogTitle: computedTitle,
-  description: computedDesc,
-  ogDescription: computedDesc,
-  ogUrl: `${runtimeConfig.public.APP_URL}${route.fullPath}`,
-  ogImage: computedImage,
-  twitterImage: computedImage,
+  title: computedTitle.value,
+  ogTitle: () => computedTitle.value,
+  description: () => computedDesc.value,
+  ogDescription: () => computedDesc.value,
+  ogUrl: () => `${runtimeConfig.public.APP_URL}${route.fullPath}`,
+  ogImage: () => computedImage.value,
+  twitterImage: () => computedImage.value,
 });
 </script>
 

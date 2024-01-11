@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const year = new Date().getFullYear();
+
 const socialMediaLinks = [
   { link: "https://www.facebook.com/cakadi190", icon: 'fa6-brands:facebook' },
   { link: "https://www.twitter.com/cakadi190", icon: 'fa6-brands:twitter' },
@@ -44,20 +46,22 @@ export default {
     <div class="inner">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="mb-4 mb-md-0 col-md-6">
             <nuxt-link to="/" class="d-block mb-2">
               <app-logo height="64px" width="200" />
             </nuxt-link>
 
             <p>Saya adalah seorang fullstack developer yang suka sekali dengan desain dan juga tertarik di dunia teknologi. Saya adalah orang kelahiran Klaten, Jawa Tengah dan berdomisili di Ngawi, Jawa Timur.</p>
 
-            <div class="social-links">
+            <div class="social-links pb-4">
               <a :href="link.link" v-for="link in socialMediaLinks" :key="link.link" target="_blank" rel="noopener noreferrer" class="social-link">
                 <Icon :name="link.icon" />
               </a>
             </div>
+
+            <p class="mb-0">Hak Cipta 2003-{{ year ?? 2003 }} <nuxt-link to="/">Catatan Cak Adi</nuxt-link>.</p>
           </div>
-          <div class="col-md-2 col-6">
+          <div class="mb-4 mb-md-0 col-md-2 col-6">
             <h6 class="fw-bold mb-3">Kegabutan</h6>
 
             <ul class="list-unstyled d-flex flex-column gap-2">
@@ -67,7 +71,7 @@ export default {
               </li>
             </ul>
           </div>
-          <div class="col-md-2 col-6">
+          <div class="mb-4 mb-md-0 col-md-2 col-6">
             <h6 class="fw-bold mb-3">Sumber Daya</h6>
 
             <ul class="list-unstyled d-flex flex-column gap-2">

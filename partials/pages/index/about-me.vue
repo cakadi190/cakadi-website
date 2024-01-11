@@ -29,7 +29,7 @@ export default defineComponent({
         </div>
         <div class="col-md-4 d-none h-100 d-md-none d-lg-flex align-items-center justify-content-center">
           <div class="image-circular">
-            <NuxtImg src="/images/pp.png" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
+            <nuxt-img src="/images/pp.png" :placeholder="[50, 50, 75, 5]" densities="x1 x2" sizes="100vw sm:50vw md:400px" />
 
             <div class="icons-stack" v-for="(stack, index) in techStack" :key="index">
               <div class="inner-content" data-bs-toggle="tooltip" data-bs-placement="top" :title="stack.name">

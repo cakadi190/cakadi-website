@@ -102,6 +102,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Signika: true,
+      Amiri: true,
       'Public Sans': true,
       'JetBrains Mono': true,
       Poppins: true,
