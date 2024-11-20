@@ -38,6 +38,18 @@ importers:
       '@adonisjs/vite':
         specifier: ^3.0.0
         version: 3.0.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/shield@8.1.1(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(@adonisjs/session@7.5.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0))(edge.js@6.2.0))(edge.js@6.2.0)(vite@5.4.11(@types/node@22.9.1)(sass@1.77.6))
+      '@fontsource-variable/dm-sans':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/jetbrains-mono':
+        specifier: ^5.1.1
+        version: 5.1.1
+      '@fontsource-variable/montserrat':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/space-grotesk':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.7.0
         version: 6.7.0
@@ -785,6 +797,18 @@ packages:
   '@faker-js/faker@9.2.0':
     resolution: {integrity: sha512-ulqQu4KMr1/sTFIYvqSdegHT8NIkt66tFAkugGnHA+1WAfEn6hMzNR+svjXGFRVLnapxvej67Z/LwchFrnLBUg==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+
+  '@fontsource-variable/dm-sans@5.1.0':
+    resolution: {integrity: sha512-wPhOMY/3ipy0t5ZIQk7FTKd3uZqE1XP2Yd2oKe3HfMWCYkotbcoMLkBQXcZzf/SgdCdczSP/hiO/PAZb84Kbxw==}
+
+  '@fontsource-variable/jetbrains-mono@5.1.1':
+    resolution: {integrity: sha512-V+1aRFRvuZ66PpO30s8l/2aADKzpV9VRsO3kSZE+rTMvi4vab3cUcPHMN2z+wAvjkYJO71Yf+g3/Y6pSMmQpVQ==}
+
+  '@fontsource-variable/montserrat@5.1.0':
+    resolution: {integrity: sha512-1bloVBKJx/ABBmF+/VzhJZDLzaDNUxw/8Pt5AOgfKL6N3t1fAhwtJBb1gdqU7ABckSNLsKf572A5Inv9YneRug==}
+
+  '@fontsource-variable/space-grotesk@5.1.0':
+    resolution: {integrity: sha512-K2mwQYNyLook6EbtMB+Ix8srQsYZRigfxayoSGl1QsgVAk/J21s0FMZu0FWzTvONyQkYAR704rLfYSstVMi6jQ==}
 
   '@fortawesome/fontawesome-common-types@6.7.0':
     resolution: {integrity: sha512-AUetZXU6cQdAe21p8j3mg2aD40MMDKfFNUNgq/G7gR3HMDp0BsQskAudLDSgq6d0SbCY0QKP0g4s5Y02S1kkhw==}
@@ -4538,6 +4562,14 @@ snapshots:
       levn: 0.4.1
 
   '@faker-js/faker@9.2.0': {}
+
+  '@fontsource-variable/dm-sans@5.1.0': {}
+
+  '@fontsource-variable/jetbrains-mono@5.1.1': {}
+
+  '@fontsource-variable/montserrat@5.1.0': {}
+
+  '@fontsource-variable/space-grotesk@5.1.0': {}
 
   '@fortawesome/fontawesome-common-types@6.7.0': {}
 
