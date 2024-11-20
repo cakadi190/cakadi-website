@@ -6,7 +6,7 @@ import type { HttpContext } from '@adonisjs/core/http';
 export default class HomeController {
   async index({ inertia }: HttpContext) {
     const seoData = SeoHelper
-      .generateTitle('Beranda')
+      .generateTitle('Fullstack Web Developer')
       .generateDesc('Cak Adi merupakan seorang web developer yang mengutamakan minimalis, efisiensi dan juga fungsi dalam sebuah website.')
       .generateKeywords('web, app, technology, web developer, freelancer web, web programmer')
       .setAuthor('Cak Adi')

@@ -1,9 +1,11 @@
 import SeoHelper from '#helpers/seo_helper';
 import User from '#models/user';
 import { createAuthValidator } from '#validators/auth_login';
+import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http'
 import { PageObject } from '@adonisjs/inertia/types';
 
+@inject()
 export default class AuthenticationController {
   /**
    * Renders the login page for the user.

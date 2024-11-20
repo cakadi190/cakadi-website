@@ -49,7 +49,7 @@ export default class SeoHelper {
    * Menghasilkan judul halaman yang terformat dengan nama aplikasi
    */
   public static generateTitle(title: string): typeof SeoHelper {
-    this.title = `${title} - ${env.get('APP_NAME')}`;
+    this.title = `${title} • ${env.get('APP_NAME')}`;
     return this;
   }
 

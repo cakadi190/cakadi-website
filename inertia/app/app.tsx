@@ -13,7 +13,10 @@ const appName = import.meta.env.VITE_APP_NAME || 'Catatan Cak Adi'
 createInertiaApp({
   progress: { color: '#5468FF' },
 
-  title: (title) => `${title} - ${appName}`,
+  title: (title) =>
+    title ? (
+      title.includes(appName) ? title : `${title} • ${appName}`
+    ) : appName,
 
   resolve: (name) => {
     return resolvePageComponent(
