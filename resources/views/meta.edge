@@ -1,0 +1,87 @@
+<title inertia>{{ title || 'Catatan Cak Adi' }}</title>
+
+{{-- Basic Meta Tags --}}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="description" content="{{ description }}" />
+<meta name="keywords" content="{{ keywords }}" />
+<meta name="author" content="{{ author }}" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<meta name="theme-color" content="#fff" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+{{-- Canonical URL --}}
+<link rel="canonical" href="{{ url }}" />
+<link rel="alternate" hreflang="id-ID" href="{{ url }}" />
+
+{{-- Open Graph / Facebook --}}
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ url }}" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:image" content="{{ image }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="id_ID" />
+<meta property="og:site_name" content="{{ siteName }}" />
+
+{{-- Twitter --}}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@cakadi190" />
+<meta name="twitter:creator" content="@cakadi190" />
+<meta name="twitter:url" content="{{ url }}" />
+<meta name="twitter:title" content="{{ title }}" />
+<meta name="twitter:description" content="{{ description }}" />
+<meta name="twitter:image" content="{{ image }}" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="{{ author }}" />
+
+{{-- WhatsApp --}}
+<meta property="og:image:alt" content="{{ imageAlt }}" />
+<meta property="og:image:type" content="image/jpeg" />
+
+{{-- Pinterest --}}
+<meta name="pinterest-rich-pin" content="true" />
+<meta name="pinterest:description" content="{{ description }}" />
+<meta name="pinterest:image" content="{{ image }}" />
+
+{{-- LinkedIn --}}
+<meta property="linkedin:title" content="{{ title }}" />
+<meta property="linkedin:description" content="{{ description }}" />
+<meta property="linkedin:image" content="{{ image }}" />
+
+{{-- Apple Mobile Web App --}}
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-title" content="{{ title }}" />
+
+{{-- Microsoft Tiles --}}
+<meta name="msapplication-TileColor" content="#fff" />
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+
+{{-- Structured Data / Schema.org --}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ siteName }}",
+  "url": "{{ url }}",
+  "description": "{{ description }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ author }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ siteName }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ image }}",
+      "width": 600,
+      "height": 60
+    }
+  }
+}
+</script>
