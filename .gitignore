@@ -12,6 +12,10 @@ tmp
 # Frontend assets compiled code
 public/assets
 
+# Git lock data
+*lock*
+*.lock*
+
 # Build tools specific
 npm-debug.log
 yarn-error.log
