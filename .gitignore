@@ -14,7 +14,12 @@ public/assets
 
 # Git lock data
 *lock*
+*-lock*
+*-lock.*
 *.lock*
+bun.lockb
+pnpm-lock.yaml
+package-lock
 
 # Build tools specific
 npm-debug.log
