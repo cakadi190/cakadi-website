@@ -4,15 +4,16 @@ import OverviewSection from '~/components/contents/home/overview';
 import { Head } from '@inertiajs/react';
 import { SeoType } from '~/types/seo-types';
 import FeaturedSection from '~/components/contents/home/featured';
+import Landing from '~/layouts/landing';
 
 export default function Home({ title }: React.PropsWithChildren<SeoType>) {
   return (
-    <>
+    <Landing>
       <Head title={title} />
 
       <HeaderSection />
       <FeaturedSection />
       <OverviewSection />
-    </>
+    </Landing>
   );
 };
