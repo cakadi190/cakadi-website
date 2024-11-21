@@ -13,6 +13,7 @@ const NavbarStyled = styled(Navbar)<{ yposition: number }>`
   background: rgba(var(--bs-white-rgb), ${({ yposition }) => (yposition > 25 ? 0.8 : 0)});
   --bs-border-color: ${({ yposition }) => (yposition > 25 ? 'var(--bs-gray-300)' : 'transparent')};
 `;
+
 const NavLinkHovered = styled(Nav.Link)`
   --bs-nav-link-padding-y: 0;
   --bs-nav-link-padding-x: 0;
@@ -62,12 +63,12 @@ const NavigationBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Menu kiri */}
-          <Nav className="me-auto">
+          <Nav className="me-auto gap-2">
             <Link className="nav-link" href="/about-me">
               Tentang Saya
             </Link>
             <Link className="nav-link" href="/projects">
-              Projects
+              Proyek Saya
             </Link>
             <Link className="nav-link" href="/educations">
               Pendidikan
