@@ -110,6 +110,12 @@ importers:
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
+      sweetalert2:
+        specifier: ^11.14.5
+        version: 11.14.5
+      sweetalert2-react-content:
+        specifier: ^5.0.7
+        version: 5.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sweetalert2@11.14.5)
     devDependencies:
       '@adonisjs/assembler':
         specifier: ^7.8.2
@@ -3620,6 +3626,16 @@ packages:
 
   swagger-schema-official@2.0.0-bab6bed:
     resolution: {integrity: sha512-rCC0NWGKr/IJhtRuPq/t37qvZHI/mH4I4sxflVM+qgVe5Z2uOCivzWaVbuioJaB61kvm5UvB7b49E+oBY0M8jA==}
+
+  sweetalert2-react-content@5.0.7:
+    resolution: {integrity: sha512-8Fk82Mpk45lFXpJWKIFF/lq8k/dJKDDQGFcuqVosaL/qRdViyAs5+u37LoTGfnOIvf+rfQB3PAXcp1XLLn+0ew==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      sweetalert2: ^11.0.0
+
+  sweetalert2@11.14.5:
+    resolution: {integrity: sha512-8MWk5uc/r6bWhiJWkUXyEuApfXAhSCZT8FFX7pZXL7YwaPxq+9Ynhi2dUzWkOFn9jvLjKj22CXuccZ+IHcnjvQ==}
 
   synckit@0.9.2:
     resolution: {integrity: sha512-vrozgXDQwYO72vHjUb/HnFbQx1exDjoKzqx23aXEg2a9VIg2TSFZ8FmeZpTjUCFMYw7mpX4BE2SFu8wI7asYsw==}
@@ -7454,6 +7470,14 @@ snapshots:
       - openapi-types
 
   swagger-schema-official@2.0.0-bab6bed: {}
+
+  sweetalert2-react-content@5.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sweetalert2@11.14.5):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      sweetalert2: 11.14.5
+
+  sweetalert2@11.14.5: {}
 
   synckit@0.9.2:
     dependencies:
