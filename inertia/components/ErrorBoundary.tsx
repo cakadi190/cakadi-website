@@ -1,6 +1,8 @@
-// resources/components/ErrorBoundary.tsx
-import { Component, ErrorInfo, ReactNode } from 'react';
-import { router } from '@inertiajs/react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Tab, Container, Card, Badge, Nav, Table } from 'react-bootstrap';
+import { Link, router } from '@inertiajs/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   children: ReactNode;
@@ -10,30 +12,38 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
+  stack: string | null | undefined;
+  environment: any;
 }
 
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
-    error: null
+    error: null,
+    stack: null,
+    environment: {},
   };
 
   public static getDerivedStateFromError(error: Error): State {
     return {
       hasError: true,
-      error
+      error,
+      stack: null,
+      environment: {},
     };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    this.setState({
+      stack: errorInfo.componentStack,
+      environment: {
+        nodeVersion: import.meta.env.VITE_NODE_VERSION,
+        devMode: import.meta.env.MODE || 'development',
+      }
+    })
     console.error('Error caught by boundary:', error);
     console.error('Component stack:', errorInfo.componentStack);
   }
-
-  private handleReload = () => {
-    // Gunakan router Inertia untuk reload halaman
-    router.reload();
-  };
 
   private handleBackHome = () => {
     // Kembali ke halaman utama
@@ -42,43 +52,85 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
+      const { children } = this.props;
+
+      // Type guard to ensure children is a ReactElement
+      const initialPageProps = React.isValidElement(children) ? children.props.initialPage.props.serverInfo : null;
+
       return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-          <div className="max-w-lg w-full bg-white rounded-lg shadow-md p-8">
-            <div className="text-center">
-              <h1 className="text-3xl font-bold text-red-600 mb-2">
-                Oops! Terjadi Kesalahan
-              </h1>
-
-              <div className="mt-4 text-gray-600">
-                <p className="mb-4">
-                  {this.state.error?.message || 'Terjadi kesalahan yang tidak diketahui'}
-                </p>
-                {process.env.NODE_ENV === 'development' && (
-                  <pre className="mt-4 p-4 bg-gray-100 rounded text-left text-sm overflow-x-auto">
-                    {this.state.error?.stack}
-                  </pre>
-                )}
+        <Container className='py-4'>
+          <Card className="mb-3 position-relative overflow-hidden">
+            <Card.Body>
+              <div style={{
+                position: 'absolute', top: '-1rem', right: '-.5rem', opacity: 0.125
+              }}>
+                <FontAwesomeIcon style={{ fontSize: '5rem', transform: 'rotate(-30deg)' }} icon={faExclamationTriangle} />
               </div>
+              <Badge bg={"danger"}>500</Badge>
+              <h1>Ada Sedikit Kesalahan!</h1>
+              <p className='mb-0'>{this.state.error?.message}</p>
+            </Card.Body>
+            <Link href="/" onClick={this.handleBackHome} className='card-footer'>Kembali Ke Beranda</Link>
+          </Card>
 
-              <div className="mt-6 space-x-4">
-                <button
-                  onClick={this.handleReload}
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-                >
-                  Muat Ulang Halaman
-                </button>
+          <Tab.Container id="stack-tracer" defaultActiveKey="stack">
+            <Card className='mb-4'>
+              <Card.Header>
+                <Nav variant="tabs">
+                  <Nav.Item>
+                    <Nav.Link eventKey="stack">Jejak Tumpukan</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="env">Lingkungan Pengembangan</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card.Header>
+              <Card.Body>
+                <Tab.Content>
+                  <Tab.Pane eventKey="stack">
+                    <pre className='m-0 p-0'>
+                      <code className='m-0 p-0'>{this.state.stack}</code>
+                    </pre>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="env">
+                    <Table responsive className='mb-0' bordered>
+                      <tbody>
+                        <tr>
+                          <th>Versi NodeJS</th>
+                          <td>{initialPageProps?.nodejsVersion}</td>
+                        </tr>
+                        <tr>
+                          <th>Sistem Operasi</th>
+                          <td>{initialPageProps?.platform}</td>
+                        </tr>
+                        <tr>
+                          <th>Arsitektur Prosesor</th>
+                          <td>{initialPageProps?.arch}</td>
+                        </tr>
+                        <tr>
+                          <th>Mode Lingkungan</th>
+                          <td>{initialPageProps?.developmentMode === 'development' ? 'Pengembangan' : 'Produksi'}</td>
+                        </tr>
+                        <tr>
+                          <th>Mode Pengembang?</th>
+                          <td>{initialPageProps?.developmentMode === 'development' ? 'Ya' : 'Tidak'}</td>
+                        </tr>
+                        <tr>
+                          <th>Folder</th>
+                          <td>{initialPageProps?.devPath}</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </Tab.Pane>
+                </Tab.Content>
+              </Card.Body>
+            </Card>
+          </Tab.Container>
 
-                <button
-                  onClick={this.handleBackHome}
-                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors"
-                >
-                  Kembali ke Beranda
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+          <a href="https://react.dev" className="d-flex mx-auto gap-2 justify-content-center">
+            <img src="https://react.dev/_next/image?url=%2Fimages%2Fuwu.png&w=384&q=75" height={75} alt="ReactJS Logo" />
+          </a>
+        </Container>
       );
     }
 

@@ -1,6 +1,7 @@
 /// <reference path="../../adonisrc.ts" />
 /// <reference path="../../config/inertia.ts" />
 
+import '../css/fonts.scss';
 import '../css/app.scss';
 import './bootstrap';
 import { hydrateRoot } from 'react-dom/client'

@@ -1,5 +1,5 @@
-import { defineConfig } from '@adonisjs/inertia'
-import type { InferSharedProps } from '@adonisjs/inertia/types'
+import { defineConfig } from '@adonisjs/inertia';
+import type { InferSharedProps } from '@adonisjs/inertia/types';
 
 const inertiaConfig = defineConfig({
   /**
@@ -7,10 +7,20 @@ const inertiaConfig = defineConfig({
    */
   rootView: 'inertia_layout',
 
+  assetsVersion: 'v4.0.0',
+
   /**
    * Data that should be shared with all rendered pages
    */
   sharedData: {
+    user: ({ auth }) => auth.user,
+    serverInfo: {
+      devPath: process.cwd(),
+      developmentMode: process.env.NODE_ENV,
+      platform: process.platform,
+      arch: process.arch,
+      nodejsVersion: process.version,
+    },
     errors: (ctx) => ctx.session?.flashMessages.get('errors'),
   },
 
