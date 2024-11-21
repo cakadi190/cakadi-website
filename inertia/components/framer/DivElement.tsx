@@ -76,7 +76,7 @@ export const SlideRight: React.FC<SlideProps> = ({
   delay = 0
 }) => {
   const variants: Variants = {
-    hidden: { opacity: 0, x: -32 },
+    hidden: { opacity: 0, x: 32 },
     visible: {
       opacity: 1,
       x: 0,

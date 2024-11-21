@@ -1,12 +1,13 @@
 
 import styled from '@emotion/styled';
+import imageFoto from '~/images/fotoku-xxxhdpi.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { BootstrapOriginal, FigmaOriginal, IllustratorPlain, LaravelOriginal, MysqlOriginal, NextjsOriginal, ReactOriginal, TypescriptOriginal, VscodeOriginal } from 'devicons-react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { usePage } from '@inertiajs/react';
 import { SeoType } from '~/types/seo-types';
-import { SlideRight, SlideUp } from '~/components/framer/DivElement';
+import { SlideLeft, SlideRight, SlideUp } from '~/components/framer/DivElement';
 import { useMemo } from 'react';
 import { useSweetalert } from '~/hooks/sweetalert';
 
@@ -55,10 +56,10 @@ const HeaderLeft = () => {
     <div className='d-flex flex-column h-100'>
       <div className="mt-auto pt-4">
         <SlideRight>
-          <h3 className="fw-normal text-center text-lg-start">Halo Rek! 👋 Namaku</h3>
+          <h3 className="fw-normal">Halo Rek! 👋 Namaku</h3>
         </SlideRight>
         <SlideRight delay={0.25}>
-          <h1 className="display-4 text-center text-lg-start fw-bold">
+          <h1 className="display-4 fw-bold">
             <SpanUnderlined>Cak</SpanUnderlined>{" "}
             <SpanUnderlined>A</SpanUnderlined>mir{" "}
             Zuh
@@ -67,11 +68,11 @@ const HeaderLeft = () => {
           </h1>
         </SlideRight>
         <SlideRight delay={0.325}>
-          <p className='lead text-center text-lg-start mb-0 fw-normal' dangerouslySetInnerHTML={{ __html: description }} />
+          <p className='lead mb-0 fw-normal' dangerouslySetInnerHTML={{ __html: description }} />
         </SlideRight>
       </div>
 
-      <SlideRight delay={0.425} className="d-flex flex-column flex-lg-row align-items-center pt-4 gap-2">
+      <SlideRight delay={0.425} className="d-flex d-none d-md-none d-lg-flex align-items-center pt-4 gap-2">
         <Button onClick={handleCVDownload} className="d-flex align-items-center gap-2" size='lg'>
           <FontAwesomeIcon icon={faDownload} />
           <span>Unduh CV</span>
@@ -82,9 +83,20 @@ const HeaderLeft = () => {
         </Button>
       </SlideRight>
 
+      <SlideRight delay={0.425} className="d-flex d-lg-none align-items-center pt-4 gap-2">
+        <Button onClick={handleCVDownload} className="d-flex align-items-center gap-2">
+          <FontAwesomeIcon icon={faDownload} />
+          <span>Unduh CV</span>
+        </Button>
+        <Button className="d-flex align-items-center gap-2" variant='outline-primary'>
+          <FontAwesomeIcon icon={faEnvelope} />
+          <span>Kontak Saya</span>
+        </Button>
+      </SlideRight>
+
       <SlideUp delay={0.75} className="pt-4 mt-auto">
-        <p className="mb-2 text-center text-lg-start"><em>Techstack</em>/perkakas yang saya sukai:</p>
-        <div className="d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start" style={{ gap: '.875rem' }}>
+        <p className="mb-2"><em>Techstack</em>/perkakas yang saya sukai:</p>
+        <div className="d-flex align-items-center flex-wrap" style={{ gap: '.875rem' }}>
           {favouriteTechStack.map((Icon, index) => Icon !== 'line' ? (
             <SlideUp key={index} delay={1 + (index * 0.05)}>
               <GrayScaleIcon>
@@ -104,7 +116,9 @@ const HeaderLeft = () => {
 
 function HeaderImage() {
   return (
-    <div style={{ aspectRatio: 1 / 1, width: '100%', height: '100%' }} className='bg-light'></div>
+    <SlideLeft delay={1}>
+      <img src={imageFoto} style={{ width: '100%' }} />
+    </SlideLeft>
   );
 };
 
@@ -116,7 +130,7 @@ export default function HeaderSection() {
           <Col md={7}>
             <HeaderLeft />
           </Col>
-          <Col md={5}>
+          <Col md={5} className="d-none d-md-none d-lg-inline">
             <HeaderImage />
           </Col>
         </Row>

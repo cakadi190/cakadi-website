@@ -83,6 +83,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@inertiajs/react": "^1.2.0",
     "@izzyjs/route": "^1.2.0",
+    "@reactuses/core": "^5.0.23",
     "@vinejs/vine": "^2.1.0",
     "bootstrap": "^5.3.3",
     "devicons-react": "^1.3.0",
