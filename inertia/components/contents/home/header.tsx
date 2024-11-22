@@ -117,7 +117,9 @@ const HeaderLeft = () => {
                 </SlideUp>
               </GrayScaleIcon>
             ) : (
-              <span key={index} className="vr" />
+              <SlideUp delay={1 + (index * .05)}>
+                <span key={index} className="vr" />
+              </SlideUp>
             )
           )}
         </div>
