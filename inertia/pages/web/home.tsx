@@ -6,6 +6,7 @@ import { SeoType } from '~/types/seo-types';
 import FeaturedSection from '~/components/contents/home/featured';
 import Landing from '~/layouts/landing';
 import PortfolioSection from '~/components/contents/home/portfolio';
+import BlogSection from '~/components/contents/home/blog';
 
 export default function Home({ title }: React.PropsWithChildren<SeoType>) {
   return (
@@ -16,6 +17,7 @@ export default function Home({ title }: React.PropsWithChildren<SeoType>) {
       <FeaturedSection />
       <OverviewSection />
       <PortfolioSection />
+      <BlogSection />
     </Landing>
   );
 };
