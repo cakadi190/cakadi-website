@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import imageFoto from '~/images/fotoku-xxxhdpi.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { BootstrapOriginal, FigmaOriginal, IllustratorPlain, LaravelOriginal, MysqlOriginal, NextjsOriginal, ReactOriginal, TypescriptOriginal, VscodeOriginal } from 'devicons-react';
+import { AdonisjsOriginal, BootstrapOriginal, FigmaOriginal, IllustratorPlain, LaravelOriginal, MysqlOriginal, NextjsOriginal, ReactOriginal, TypescriptOriginal, VscodeOriginal } from 'devicons-react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { usePage } from '@inertiajs/react';
 import { SeoType } from '~/types/seo-types';
@@ -48,7 +48,19 @@ const HeaderLeft = () => {
   }
 
   const favouriteTechStack = useMemo(
-    () => [ReactOriginal, BootstrapOriginal, LaravelOriginal, NextjsOriginal, MysqlOriginal, TypescriptOriginal, 'line', FigmaOriginal, VscodeOriginal, IllustratorPlain],
+    () => [
+      { type: 'icon', icon: <ReactOriginal size={24} />, title: 'React' },
+      { type: 'icon', icon: <BootstrapOriginal size={24} />, title: 'Bootstrap' },
+      { type: 'icon', icon: <LaravelOriginal size={24} />, title: 'Laravel' },
+      { type: 'icon', icon: <NextjsOriginal size={24} />, title: 'Next.js' },
+      { type: 'icon', icon: <AdonisjsOriginal size={24} />, title: 'AdonisJS' },
+      { type: 'icon', icon: <MysqlOriginal size={24} />, title: 'MySQL' },
+      { type: 'icon', icon: <TypescriptOriginal size={24} />, title: 'TypeScript' },
+      { type: 'line' },
+      { type: 'icon', icon: <FigmaOriginal size={24} />, title: 'Figma' },
+      { type: 'icon', icon: <VscodeOriginal size={24} />, title: 'VS Code' },
+      { type: 'icon', icon: <IllustratorPlain size={24} />, title: 'Illustrator' }
+    ],
     []
   );
 
@@ -96,18 +108,18 @@ const HeaderLeft = () => {
 
       <SlideUp delay={0.75} className="pt-4 mt-auto">
         <p className="mb-2"><em>Techstack</em>/perkakas yang saya sukai:</p>
-        <div className="d-flex align-items-center flex-wrap" style={{ gap: '.875rem' }}>
-          {favouriteTechStack.map((Icon, index) => Icon !== 'line' ? (
-            <SlideUp key={index} delay={1 + (index * 0.05)}>
-              <GrayScaleIcon>
-                <Icon size={28} />
+        <div className="d-flex align-items-center flex-wrap gap-3">
+          {favouriteTechStack.map(({ icon, title, type }, index) =>
+            type === 'icon' ? (
+              <GrayScaleIcon key={index}>
+                <SlideUp delay={1 + (index * .05)}>
+                  <div data-bs-toggle="tooltip" title={title}>{icon}</div>
+                </SlideUp>
               </GrayScaleIcon>
-            </SlideUp>
-          ) : (
-            <SlideUp key={index} delay={1 + (index * 0.025)}>
-              <span className="vr h-100" />
-            </SlideUp>
-          ))}
+            ) : (
+              <span key={index} className="vr" />
+            )
+          )}
         </div>
       </SlideUp>
     </div>

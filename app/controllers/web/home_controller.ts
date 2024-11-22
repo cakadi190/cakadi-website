@@ -18,4 +18,19 @@ export default class HomeController {
 
     return inertia.render('web/home', seoData, seoData)
   }
+
+  async about({ inertia }: HttpContext) {
+    const seoData = SeoHelper
+      .generateTitle('Tentang Saya')
+      .generateDesc('Cak Adi merupakan seorang web developer yang mengutamakan minimalis, efisiensi dan juga fungsi dalam sebuah website.')
+      .generateKeywords('web, app, technology, web developer, freelancer web, web programmer')
+      .setAuthor('Cak Adi')
+      .setSiteName('Catatan Cak Adi')
+      .setOgImage('/images/og.jpg')
+      .setCurrentUrl('https://www.cakadi.web.id')
+      .allowRobots(true)
+      .build();
+
+    return inertia.render('web/about', seoData, seoData)
+  }
 }

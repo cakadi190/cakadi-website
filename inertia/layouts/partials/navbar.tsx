@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useRef } from "react";
 import { faFacebook, faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logoColor from '~/images/brands/svg/logo-alt-color.svg';
 import usePageScroll from "~/hooks/usePageScroll";
 import styled from '@emotion/styled';
+import { MainPageProps } from "~/types";
 
-const NavbarStyled = styled(Navbar)<{ yposition: number }>`
+const NavbarStyled = styled(Navbar) <{ yposition: number }>`
   transition: all 0.2s;
   backdrop-filter: blur(1rem);
   background: rgba(var(--bs-white-rgb), ${({ yposition }) => (yposition > 25 ? 0.8 : 0)});
@@ -38,9 +39,20 @@ const socialMediaList = [
   { icon: faXTwitter, href: 'https://x.com/cakadi190' },
 ];
 
+const menuItem = [
+  { label: 'Tentang Saya', href: '/about-me' },
+  { label: 'Proyek Saya', href: '/projects' },
+  { label: 'Pendidikan Saya', href: '/educations' },
+  { label: 'Karir Saya', href: '/careers' },
+  { label: 'Kontak Saya', href: '/contact-me' },
+];
+
 const NavigationBar = () => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [_, yposition] = usePageScroll();
+  const props = usePage<MainPageProps>().props;
+
+  console.log(props);
 
   return (
     <NavbarStyled
@@ -64,21 +76,11 @@ const NavigationBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Menu kiri */}
           <Nav className="me-auto gap-2">
-            <Link className="nav-link" href="/about-me">
-              Tentang Saya
-            </Link>
-            <Link className="nav-link" href="/projects">
-              Proyek Saya
-            </Link>
-            <Link className="nav-link" href="/educations">
-              Pendidikan
-            </Link>
-            <Link className="nav-link" href="/careers">
-              Karir
-            </Link>
-            <Link className="nav-link" href="/contact-me">
-              Kontak Saya
-            </Link>
+            {menuItem.map((item, index) => (
+              <Nav.Link as={Link} active={true} key={index} href={item.href}>
+                {item.label}
+              </Nav.Link>
+            ))}
           </Nav>
 
           {/* Menu kanan */}

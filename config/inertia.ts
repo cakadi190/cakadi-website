@@ -14,6 +14,10 @@ const inertiaConfig = defineConfig({
    */
   sharedData: {
     user: ({ auth }) => auth.user,
+    router: ({ request }) => ({
+      url: request.url(),
+      completeUrl: request.completeUrl(true),
+    }),
     serverInfo: {
       devPath: process.cwd(),
       developmentMode: process.env.NODE_ENV,

@@ -23,6 +23,11 @@ const InnerImageWrapper = styled.div`
   transform: rotate(-5deg);
   border-radius: 0.5rem;
   overflow: hidden;
+  transition: all .2s;
+
+  &:hover {
+    transform: rotateY(-5deg);
+  }
 `;
 
 const StyledImg = styled.img`

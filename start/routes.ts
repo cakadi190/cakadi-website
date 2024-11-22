@@ -15,8 +15,8 @@ const AuthController = () => import('#controllers/web/auth/authentication_contro
 /** --------------------------------[ HomePage ]-------------------------------- */
 router.group(() => {
   router.get('/', [HomeController, 'index']).as('index')
+  router.get('about-me', [HomeController, 'about']).as('about')
 })
-  .prefix('/')
   .as('home');
 
 /** --------------------------------[ Auth ]-------------------------------- */
