@@ -75,6 +75,7 @@ export default class HomeController {
 
     return inertia.render('web/education', seoData, seoData)
   }
+
   /**
    * Menampilkan halaman project web.
    *
@@ -94,6 +95,27 @@ export default class HomeController {
       .build();
 
     return inertia.render('web/project', seoData, seoData)
+  }
+
+  /**
+   * Menampilkan halaman karir web.
+   *
+   * @param {HttpContext} context - Konteks dari request.
+   * @returns {Promise<string | PageObject>} - Promise yang berisi view yang akan di render.
+   */
+  async career({ inertia }: HttpContext): Promise<string | PageObject> {
+    const seoData = SeoHelper
+      .generateTitle('Karir Saya')
+      .generateDesc('Pelajari lebih lanjut tentang perjalanan karir saya dan pencapaian yang telah saya raih.')
+      .generateKeywords('karir, pekerjaan, pencapaian, web developer, pengalaman kerja')
+      .setAuthor('Cak Adi')
+      .setSiteName('Catatan Cak Adi')
+      .setOgImage('/images/career.jpg')
+      .setCurrentUrl('https://www.cakadi.web.id/career')
+      .allowRobots(true)
+      .build();
+
+    return inertia.render('web/career', seoData, seoData)
   }
 }
 

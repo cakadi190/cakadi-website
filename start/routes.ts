@@ -19,6 +19,7 @@ router.group(() => {
   router.get('about-me', [HomeController, 'about']).as('about');
   router.get('education', [HomeController, 'education']).as('education');
   router.get('project', [HomeController, 'project']).as('project');
+  router.get('career', [HomeController, 'career']).as('career');
 })
   .as('home');
 
