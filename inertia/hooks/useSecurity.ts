@@ -1,5 +1,6 @@
 type useSecurityTypes = {
   antiXssHijacking: (str: string) => string;
+  cleanAllHtmlTags: (str: string) => string;
 };
 
 /**
@@ -18,6 +19,7 @@ type useSecurityTypes = {
  *
  * @returns {useSecurityTypes} An object containing:
  * - Object yang berisi fungsi `antiXssHijacking`.
+ * - Object yang berisi fungsi `cleanAllHtmlTags`.
  */
 const useSecurity = (): useSecurityTypes => {
   /**
@@ -30,7 +32,17 @@ const useSecurity = (): useSecurityTypes => {
     return str.replace(/<script.*?<\/script>/gi, '');
   };
 
-  return { antiXssHijacking };
+  /**
+   * Fungsi yang digunakan untuk menghapus semua tag HTML dari string yang diberikan.
+   *
+   * @param {string} str - String yang ingin dihapus semua tag HTML-nya.
+   * @returns {string} - String yang sudah dihapus semua tag HTML-nya.
+   */
+  const cleanAllHtmlTags = (str: string): string => {
+    return str.replace(/<.*?>/g, '');
+  }
+
+  return { antiXssHijacking, cleanAllHtmlTags };
 };
 
 export default useSecurity;

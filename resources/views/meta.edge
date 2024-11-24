@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<meta name="description" content="{{ description }}" />
+<meta name="description" content="{{ description.replace(/<.*?>/g, '') }}" />
 <meta name="keywords" content="{{ keywords }}" />
 <meta name="author" content="{{ author }}" />
 <meta name="robots" content="index, follow" />
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ url }}" />
 <meta property="og:title" content="{{ title }}" />
-<meta property="og:description" content="{{ description }}" />
+<meta property="og:description" content="{{ description.replace(/<.*?>/g, '') }}" />
 <meta property="og:image" content="{{ image }}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -33,7 +33,7 @@
 <meta name="twitter:creator" content="@cakadi190" />
 <meta name="twitter:url" content="{{ url }}" />
 <meta name="twitter:title" content="{{ title }}" />
-<meta name="twitter:description" content="{{ description }}" />
+<meta name="twitter:description" content="{{ description.replace(/<.*?>/g, '') }}" />
 <meta name="twitter:image" content="{{ image }}" />
 <meta name="twitter:label1" content="Written by" />
 <meta name="twitter:data1" content="{{ author }}" />
@@ -44,12 +44,12 @@
 
 {{-- Pinterest --}}
 <meta name="pinterest-rich-pin" content="true" />
-<meta name="pinterest:description" content="{{ description }}" />
+<meta name="pinterest:description" content="{{ description.replace(/<.*?>/g, '') }}" />
 <meta name="pinterest:image" content="{{ image }}" />
 
 {{-- LinkedIn --}}
 <meta property="linkedin:title" content="{{ title }}" />
-<meta property="linkedin:description" content="{{ description }}" />
+<meta property="linkedin:description" content="{{ description.replace(/<.*?>/g, '') }}" />
 <meta property="linkedin:image" content="{{ image }}" />
 
 {{-- Apple Mobile Web App --}}
@@ -68,7 +68,7 @@
   "@type": "WebSite",
   "name": "{{ siteName }}",
   "url": "{{ url }}",
-  "description": "{{ description }}",
+  "description": "{{ description.replace(/<.*?>/g, '') }}",
   "author": {
     "@type": "Person",
     "name": "{{ author }}"
