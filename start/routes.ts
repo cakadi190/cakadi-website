@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router';
 
 const HomeController = () => import('#controllers/web/home_controller');
 const AuthController = () => import('#controllers/web/auth/authentication_controller');
+const ProxyBlogsController = () => import('#controllers/api/proxy_blogs_controller');
 
 /** --------------------------------[ HomePage ]-------------------------------- */
 router.group(() => {
@@ -31,5 +32,10 @@ router.group(() => {
 /** --------------------------------[ Admin ]-------------------------------- */
 
 /** --------------------------------[ Api Home ]-------------------------------- */
+router.group(() => {
+  router.get('/blog-posts', [ProxyBlogsController, 'index']).as('blog-post')
+})
+  .prefix('/api')
+  .as('api');
 
 /** --------------------------------[ Api Admin ]-------------------------------- */

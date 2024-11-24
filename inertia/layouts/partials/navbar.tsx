@@ -50,9 +50,7 @@ const menuItem = [
 const NavigationBar = () => {
   const elementRef = useRef<HTMLDivElement>(null);
   const [_, yposition] = usePageScroll();
-  const props = usePage<MainPageProps>().props;
-
-  console.log(props);
+  const { router: { url } } = usePage<MainPageProps>().props;
 
   return (
     <NavbarStyled
@@ -77,7 +75,7 @@ const NavigationBar = () => {
           {/* Menu kiri */}
           <Nav className="me-auto gap-2">
             {menuItem.map((item, index) => (
-              <Nav.Link as={Link} active={true} key={index} href={item.href}>
+              <Nav.Link as={Link} active={url === item.href} key={index} href={item.href}>
                 {item.label}
               </Nav.Link>
             ))}
