@@ -113,8 +113,8 @@ const HeaderLeft = () => {
           {favouriteTechStack.map(({ icon, title, type }, index) =>
             type === 'icon' ? (
               <GrayScaleIcon key={index}>
-                <SlideUp delay={1 + (index * .05)}>
-                  <Tooltip title={title}>{icon}</Tooltip>
+                <SlideUp delay={1 + index * 0.05}>
+                  <Tooltip title={title || 'Default Title'}>{icon}</Tooltip>
                 </SlideUp>
               </GrayScaleIcon>
             ) : (

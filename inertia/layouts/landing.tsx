@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PropsWithChildren } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 import styled from "@emotion/styled";
 import NavigationBar from "./partials/navbar";
@@ -19,14 +21,30 @@ const StyledCursor = styled.div<CursorProps>`
   border: 1px solid var(--bs-dark);
   z-index: 9999;
   transition: all 0.2s ease;
-  opacity: 0.25;
   transform-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+
+  svg {
+    transform: rotate(45deg);
+    display: none;
+    color: var(--bs-white);
+  }
 
   ${({ isHovering }) =>
     isHovering &&
     `
-      transform: scale(2);
+      transform: scale(2.5);
       background-color: var(--bs-dark);
+
+      svg {
+        display: block;
+      }
     `}
 
   ${({ isFocus }) =>
@@ -73,9 +91,11 @@ export default function Landing({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex oveflow-hidden flex-column min-vh-100">
       <NavigationBar />
-      <StyledCursor ref={cursorRef} isFocus={false} isHovering={isHovering} />
+      <StyledCursor ref={cursorRef} isFocus={false} isHovering={isHovering}>
+        <FontAwesomeIcon icon={faArrowUp} size="lg" />
+      </StyledCursor>
       {children}
       <FooterSection />
     </div>
