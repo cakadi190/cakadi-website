@@ -7,7 +7,7 @@ export default class HomeController {
   async index({ inertia }: HttpContext) {
     const seoData = SeoHelper
       .generateTitle('Fullstack Web Developer')
-      .generateDesc('Cak Adi merupakan seorang web developer yang mengutamakan minimalis, efisiensi dan juga fungsi dalam sebuah website.')
+      .generateDesc('Seorang Fullstack Web Developer yang berbasis di Kota Madiun yang suka sekali dengan desain dan juga hal yang berbau teknologi dan sekarang mulai mencoba untuk mempelajari hal yang berbau geografi.')
       .generateKeywords('web, app, technology, web developer, freelancer web, web programmer')
       .setAuthor('Cak Adi')
       .setSiteName('Catatan Cak Adi')
@@ -22,7 +22,7 @@ export default class HomeController {
   async about({ inertia }: HttpContext) {
     const seoData = SeoHelper
       .generateTitle('Tentang Saya')
-      .generateDesc('Cak Adi merupakan seorang web developer yang mengutamakan minimalis, efisiensi dan juga fungsi dalam sebuah website.')
+      .generateDesc('Ketahui beberapa hal terkait dengan diri saya dan semua tentang saya.')
       .generateKeywords('web, app, technology, web developer, freelancer web, web programmer')
       .setAuthor('Cak Adi')
       .setSiteName('Catatan Cak Adi')

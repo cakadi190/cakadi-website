@@ -10,7 +10,7 @@ import { MainPageProps } from "~/types";
 
 const NavbarStyled = styled(Navbar) <{ yposition: number }>`
   transition: all 0.2s;
-  backdrop-filter: blur(1rem);
+  backdrop-filter: blur(${({ yposition }) => (yposition > 25 ? '1rem' : '0')});
   background: rgba(var(--bs-white-rgb), ${({ yposition }) => (yposition > 25 ? 0.8 : 0)});
   --bs-border-color: ${({ yposition }) => (yposition > 25 ? 'var(--bs-gray-300)' : 'transparent')};
 `;

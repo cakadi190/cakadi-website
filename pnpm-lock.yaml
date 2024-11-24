@@ -68,6 +68,9 @@ importers:
       '@izzyjs/route':
         specifier: ^1.2.0
         version: 1.2.0(@adonisjs/core@6.14.1(@adonisjs/assembler@7.8.2(babel-plugin-macros@3.1.0)(typescript@5.6.3))(@vinejs/vine@2.1.0)(edge.js@6.2.0)(pino-pretty@11.3.0))(edge.js@6.2.0)
+      '@react-hook/mouse-position':
+        specifier: ^4.1.3
+        version: 4.1.3(react@18.3.1)
       '@reactuses/core':
         specifier: ^5.0.23
         version: 5.0.23(react@18.3.1)
@@ -83,6 +86,9 @@ importers:
       edge.js:
         specifier: ^6.2.0
         version: 6.2.0
+      gsap:
+        specifier: ^3.12.5
+        version: 3.12.5
       jquery:
         specifier: ^3.7.1
         version: 3.7.1
@@ -1160,6 +1166,26 @@ packages:
     engines: {node: '>= 12'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-hook/event@1.2.6':
+    resolution: {integrity: sha512-JUL5IluaOdn5w5Afpe/puPa1rj8X6udMlQ9dt4hvMuKmTrBS1Ya6sb4sVgvfe2eU4yDuOfAhik8xhbcCekbg9Q==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@react-hook/latest@1.0.3':
+    resolution: {integrity: sha512-dy6duzl+JnAZcDbNTfmaP3xHiKtbXYOaz3G51MGVljh548Y8MWzTr+PHLOfvpypEVW9zwvl+VyKjbWKEVbV1Rg==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@react-hook/mouse-position@4.1.3':
+    resolution: {integrity: sha512-+N4X75CmFiZVEySVmz54MkHk68FqKbbBG2rMCSbGSCCFdypV7rAHiatZwx9Ruq/XfQ01XCxBPaLNMiW69mY19Q==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@react-hook/throttle@2.2.0':
+    resolution: {integrity: sha512-LJ5eg+yMV8lXtqK3lR+OtOZ2WH/EfWvuiEEu0M3bhR7dZRfTyEJKxH1oK9uyBxiXPtWXiQggWbZirMCXam51tg==}
+    peerDependencies:
+      react: '>=16.8'
 
   '@reactuses/core@5.0.23':
     resolution: {integrity: sha512-FsaCxZLjU5LbzNdNJc/l7U45kWwimWwkCGqq2ZKx5m3Yw8S6jdzfhvtcdQPhp6RjNao4o5UrtuF0DxhWTOKGyA==}
@@ -2547,6 +2573,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
 
   has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
@@ -5211,6 +5240,25 @@ snapshots:
       '@swc/helpers': 0.5.15
       react: 18.3.1
 
+  '@react-hook/event@1.2.6(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+
+  '@react-hook/latest@1.0.3(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+
+  '@react-hook/mouse-position@4.1.3(react@18.3.1)':
+    dependencies:
+      '@react-hook/event': 1.2.6(react@18.3.1)
+      '@react-hook/throttle': 2.2.0(react@18.3.1)
+      react: 18.3.1
+
+  '@react-hook/throttle@2.2.0(react@18.3.1)':
+    dependencies:
+      '@react-hook/latest': 1.0.3(react@18.3.1)
+      react: 18.3.1
+
   '@reactuses/core@5.0.23(react@18.3.1)':
     dependencies:
       '@microsoft/fetch-event-source': 2.0.1
@@ -6631,6 +6679,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  gsap@3.12.5: {}
 
   has-bigints@1.0.2: {}
 

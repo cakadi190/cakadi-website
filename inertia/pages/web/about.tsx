@@ -1,10 +1,12 @@
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Head } from "@inertiajs/react";
 import Page from "~/layouts/page";
 import { SeoType } from "~/types/seo-types";
 
 export default function About({ title, description }: SeoType) {
   return (
-    <Page header={title.split(' • CATATAN CAK ADI')[0]} desc={description}>
+    <Page header={title.split(' • ')[0]} desc={description} icon={<FontAwesomeIcon icon={faInfoCircle} />}>
       <Head title={title} />
     </Page>
   );
