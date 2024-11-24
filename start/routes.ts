@@ -18,6 +18,7 @@ router.group(() => {
   router.get('/', [HomeController, 'index']).as('index');
   router.get('about-me', [HomeController, 'about']).as('about');
   router.get('education', [HomeController, 'education']).as('education');
+  router.get('project', [HomeController, 'project']).as('project');
 })
   .as('home');
 

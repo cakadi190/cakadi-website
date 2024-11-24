@@ -41,9 +41,9 @@ const socialMediaList = [
 
 const menuItem = [
   { label: 'Tentang Saya', href: '/about-me' },
-  { label: 'Proyek Saya', href: '/projects' },
-  { label: 'Pendidikan Saya', href: '/educations' },
-  { label: 'Karir Saya', href: '/careers' },
+  { label: 'Proyek Saya', href: '/project' },
+  { label: 'Pendidikan Saya', href: '/education' },
+  { label: 'Karir Saya', href: '/career' },
   { label: 'Kontak Saya', href: '/contact-me' },
 ];
 

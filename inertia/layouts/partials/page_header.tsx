@@ -42,7 +42,7 @@ const CustomStyledIcon = styled.div`
 
   svg {
     font-size: 10rem;
-    transform: rotate(30deg);
+    transform: rotate(10deg);
   }
 `;
 
