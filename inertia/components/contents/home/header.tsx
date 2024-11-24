@@ -9,7 +9,8 @@ import { usePage } from '@inertiajs/react';
 import { SeoType } from '~/types/seo-types';
 import { SlideLeft, SlideRight, SlideUp } from '~/components/framer/DivElement';
 import { useMemo } from 'react';
-import { useSweetalert } from '~/hooks/sweetalert';
+import { useSweetalert } from '~/hooks/useSwal';
+import Tooltip from '~/components/ui-extended/Tooltip';
 
 const SpanUnderlined = styled.span`
   text-decoration: underline;
@@ -113,7 +114,7 @@ const HeaderLeft = () => {
             type === 'icon' ? (
               <GrayScaleIcon key={index}>
                 <SlideUp delay={1 + (index * .05)}>
-                  <div data-bs-toggle="tooltip" title={title}>{icon}</div>
+                  <Tooltip title={title}>{icon}</Tooltip>
                 </SlideUp>
               </GrayScaleIcon>
             ) : (

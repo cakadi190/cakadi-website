@@ -1,4 +1,3 @@
-// Base interfaces that are commonly reused
 export interface Link {
   href: string;
   targetHints?: {
@@ -51,7 +50,6 @@ export interface ImageMeta {
   keywords: string[];
 }
 
-// Common properties shared between different content types
 interface BaseContent {
   id: number;
   date: string;
@@ -76,7 +74,6 @@ interface BaseContent {
   class_list: string[];
 }
 
-// Post specific interface
 export interface Post extends BaseContent {
   content: RenderedContent;
   excerpt: RenderedContent;
@@ -125,7 +122,6 @@ export interface Post extends BaseContent {
   };
 }
 
-// Media specific interface
 export interface Media extends BaseContent {
   meta: any[];
   description: RenderedContent;
@@ -153,7 +149,6 @@ export interface Media extends BaseContent {
   };
 }
 
-// User interface
 export interface User {
   id: number;
   name: string;
@@ -162,7 +157,7 @@ export interface User {
   link: string;
   slug: string;
   avatar_urls: {
-    [key: string]: string; // Keys are '24', '48', '96'
+    [key: string]: string;
   };
   meta: any[];
   _links: {
@@ -171,7 +166,6 @@ export interface User {
   };
 }
 
-// Base taxonomy interface
 interface BaseTaxonomy {
   id: number;
   count: number;
@@ -194,15 +188,13 @@ interface BaseTaxonomy {
   };
 }
 
-// Tag specific interface
 export interface Tag extends BaseTaxonomy {}
 
-// Category specific interface
 export interface Category extends BaseTaxonomy {
   parent: number;
 }
 
-// Response type definitions
 export type PostsResponse = Post[];
 export type TagsResponse = Tag[];
 export type CategoriesResponse = Category[];
+

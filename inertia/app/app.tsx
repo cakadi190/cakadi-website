@@ -33,6 +33,5 @@ createInertiaApp({
         <App {...props} />
       </ErrorBoundary>
     ))
-
   },
 });

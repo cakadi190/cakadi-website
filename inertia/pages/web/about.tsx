@@ -1,11 +1,11 @@
 import { Head } from "@inertiajs/react";
-import Landing from "~/layouts/landing";
+import Page from "~/layouts/page";
 import { SeoType } from "~/types/seo-types";
 
-export default function About({ title }: SeoType) {
+export default function About({ title, description }: SeoType) {
   return (
-    <Landing>
+    <Page header={title.split(' • CATATAN CAK ADI')[0]} desc={description}>
       <Head title={title} />
-    </Landing>
-  )
+    </Page>
+  );
 };
