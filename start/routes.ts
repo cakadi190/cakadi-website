@@ -15,8 +15,9 @@ const ProxyBlogsController = () => import('#controllers/api/proxy_blogs_controll
 
 /** --------------------------------[ HomePage ]-------------------------------- */
 router.group(() => {
-  router.get('/', [HomeController, 'index']).as('index')
-  router.get('about-me', [HomeController, 'about']).as('about')
+  router.get('/', [HomeController, 'index']).as('index');
+  router.get('about-me', [HomeController, 'about']).as('about');
+  router.get('education', [HomeController, 'education']).as('education');
 })
   .as('home');
 
