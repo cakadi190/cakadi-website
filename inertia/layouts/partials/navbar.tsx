@@ -1,5 +1,5 @@
 import { Link, usePage } from "@inertiajs/react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useRef } from "react";
 import { faFacebook, faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,6 +44,12 @@ const menuItem = [
   { label: 'Proyek Saya', href: '/project' },
   { label: 'Pendidikan Saya', href: '/education' },
   { label: 'Karir Saya', href: '/career' },
+  { label: 'Lainnya', child: [
+    { label: 'Studioku', href: '/about-me/studio' },
+    { label: 'Code Snippet', href: '/references/code-snippet' },
+    { label: 'Referensi Kanal Youtube', href: '/reference/youtube-beginner' },
+    { label: 'Referensi Bootcamp', href: '/reference/bootcamp' },
+  ] },
   { label: 'Kontak Saya', href: '/contact-me' },
 ];
 
@@ -74,11 +80,25 @@ const NavigationBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Menu kiri */}
           <Nav className="me-auto gap-2">
-            {menuItem.map((item, index) => (
-              <Nav.Link as={Link} active={url === item.href} key={index} href={item.href}>
-                {item.label}
-              </Nav.Link>
-            ))}
+            {menuItem.map((item, index) => {
+              if (item.child) {
+                return (
+                  <NavDropdown key={index} title={item.label} id={`navbar-dropdown-${index}`}>
+                    {item.child.map((child, childIndex) => (
+                      <NavDropdown.Item as={Link} active={url === child.href} key={childIndex} href={child.href}>
+                        {child.label}
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
+                );
+              }
+
+              return (
+                <Nav.Link as={Link} active={url === item.href} key={index} href={item.href}>
+                  {item.label}
+                </Nav.Link>
+              );
+            })}
           </Nav>
 
           {/* Menu kanan */}

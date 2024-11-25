@@ -17,40 +17,60 @@ export default function About({ title, description }: SeoType) {
   const [_, offsetVertical] = usePageScroll();
   const { scrollingToElement, scrollingTo } = useScroll();
   const [tableOfContentList, setTableOfContentList] = useState<any[]>([]);
-  const [active, setActive] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
+    // Get headings and setup table of contents
     const headings = Array.from(colRef.current?.querySelectorAll('h2') ?? []);
     const headingParents = headings.map((h2) => h2.parentElement);
     const headingIds = headingParents.map((parent) => parent?.getAttribute('id'));
     const tableOfContents = headings.map((h2, index) => ({
-      id: `#${headingIds[index]}`,
-      name: h2.textContent,
+      id: headingIds[index] || '',
+      name: h2.textContent || '',
     }));
 
     setTableOfContentList(tableOfContents);
-  }, []);
 
-  useEffect(() => {
+    // Setup Intersection Observer
+    let visibleSections: string[] = [];
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const id = entries.find((entry) => entry.isIntersecting)?.target?.getAttribute('id');
+        entries.forEach((entry) => {
+          // Update visibleSections array
+          if (entry.isIntersecting) {
+            visibleSections.push(entry.target.id);
+          } else {
+            visibleSections = visibleSections.filter(id => id !== entry.target.id);
+          }
 
-        if (id) {
-          setActive(id);
-        }
+          // If no sections are visible, clear active state
+          if (visibleSections.length === 0) {
+            setActiveSection('');
+          }
+          // If sections are visible, set the first visible section as active
+          else {
+            setActiveSection(visibleSections[0]);
+          }
+        });
       },
       {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
+        rootMargin: '-20% 0px -75% 0px',
+        threshold: 0
       }
     );
 
-    tableOfContentList.forEach((item) => observer.observe(document.querySelector(item.id)));
+    // Observe all sections
+    headingParents.forEach((section) => {
+      if (section) observer.observe(section);
+    });
 
     return () => observer.disconnect();
-  }, [tableOfContentList]);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    scrollingToElement(`#${sectionId}`, 75);
+  };
 
   return (
     <Page header={title.split(' • ')[0]} desc={description} icon={<FontAwesomeIcon icon={faInfoCircle} />}>
@@ -69,16 +89,32 @@ export default function About({ title, description }: SeoType) {
               <Card>
                 <Card.Header className="d-flex gap-2 justify-content-between align-items-center bg-white">
                   <h5 className="mb-0 fw-bold">Daftar Isi</h5>
-                  {offsetVertical > 80 && <Badge bg="light" className="text-dark" as="a" href="#top" onClick={() => scrollingTo(0, 0)}>Kembali</Badge>}
+                  {offsetVertical > 80 && (
+                    <Badge
+                      bg="light"
+                      className="text-dark"
+                      role="button"
+                      onClick={() => scrollingTo(0, 0)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      Kembali
+                    </Badge>
+                  )}
                 </Card.Header>
                 <Card.Body className="px-0">
-                <ListGroup variant="flush">
-                  {tableOfContentList.map((item, index) => (
-                    <ListGroup.Item className="border-0" key={index} action active={active === item.id} onClick={() => scrollingToElement(item.id, 75)}>
-                      {item.name}
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
+                  <ListGroup variant="flush">
+                    {tableOfContentList.map((item, index) => (
+                      <ListGroup.Item
+                        key={index}
+                        action
+                        active={activeSection === item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className="border-0"
+                      >
+                        {item.name}
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                 </Card.Body>
               </Card>
             </div>
@@ -87,5 +123,4 @@ export default function About({ title, description }: SeoType) {
       </Container>
     </Page>
   );
-};
-
+}
