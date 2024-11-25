@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import styled from "@emotion/styled";
 import NavigationBar from "./partials/navbar";
 import FooterSection from "./partials/footer";
+import { BackToTop } from "~/components/BackToTop";
 
 interface CursorProps {
   isFocus?: boolean;
@@ -62,12 +63,25 @@ const useCursor = () => {
 
   const handleMouseOver = useCallback((event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    setIsHovering(
-      target.tagName.toLowerCase() === 'button' ||
-      target.tagName.toLowerCase() === 'a' ||
+
+    const hasNoCursorHover = (element: HTMLElement | null): boolean => {
+      if (!element) return false;
+      if (element.classList.contains('no-cursor-hover')) return true;
+      return element.parentElement ? hasNoCursorHover(element.parentElement) : false;
+    };
+
+    if (hasNoCursorHover(target)) {
+      setIsHovering(false);
+      return;
+    }
+
+    // Check for hoverable elements
+    const isHoverable =
+      ['a', 'button'].includes(target.tagName.toLowerCase()) ||
       target.classList.contains('cursor-hover') ||
-      window.getComputedStyle(target).cursor === 'pointer'
-    );
+      window.getComputedStyle(target).cursor === 'pointer';
+
+    setIsHovering(isHoverable);
   }, []);
 
   useEffect(() => {
@@ -114,6 +128,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <CustomCursor />
       <main className="flex-grow-1 pb-5">{children}</main>
       <FooterSection />
+      <BackToTop />
     </div>
   );
 };
