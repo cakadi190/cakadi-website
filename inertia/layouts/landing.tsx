@@ -75,7 +75,6 @@ const useCursor = () => {
       return;
     }
 
-    // Check for hoverable elements
     const isHoverable =
       ['a', 'button'].includes(target.tagName.toLowerCase()) ||
       target.classList.contains('cursor-hover') ||
