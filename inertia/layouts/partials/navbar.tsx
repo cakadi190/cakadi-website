@@ -45,7 +45,8 @@ const menuItem = [
   { label: 'Pendidikan Saya', href: '/education' },
   { label: 'Karir Saya', href: '/career' },
   { label: 'Lainnya', child: [
-    { label: 'Studioku', href: '/about-me/studio' },
+    { label: 'Penghargaan Saya', href: '/achievement' },
+    { label: 'Studio Saya', href: '/about-me/studio' },
     { label: 'Code Snippet', href: '/references/code-snippet' },
     { label: 'Referensi Kanal Youtube', href: '/reference/youtube-beginner' },
     { label: 'Referensi Bootcamp', href: '/reference/bootcamp' },
