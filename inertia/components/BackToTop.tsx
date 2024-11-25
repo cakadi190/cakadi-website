@@ -26,12 +26,11 @@ const BackToTopButton = styled.button<{ isScrolled: boolean }>`
   visibility: hidden;
 
   ${({ isScrolled }) =>
-    isScrolled && `
-      opacity: 1;
-      bottom: 1rem;
-      visibility: visible;
-    `
-  }
+  isScrolled && `
+    opacity: 1;
+    bottom: 1rem;
+    visibility: visible;
+  `}
 
   &:hover {
     background-color: #2d6eff;
