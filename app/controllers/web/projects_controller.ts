@@ -24,6 +24,12 @@ export default class ProjectsController {
     return inertia.render('web/project', seoData, seoData)
   }
 
+  /**
+   * Menampilkan halaman project web berdasarkan slug yang diberikan.
+   *
+   * @param {HttpContext} context - Konteks dari request.
+   * @returns {Promise<string | PageObject>} - Promise yang berisi view yang akan di render.
+   */
   async show({ inertia }: HttpContext): Promise<string | PageObject> {
     const seoData = SeoHelper
       .generateTitle('Proyek Saya')
