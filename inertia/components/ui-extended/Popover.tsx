@@ -54,6 +54,10 @@ interface PopoverOwnProps<T extends ElementType> {
    * Posisi yang akan digunakan untuk menampilkan popover
    */
   placement?: "top" | "bottom" | "left" | "right";
+  /**
+   * Reaktifitas state ketika di hover atau focus
+   */
+  trigger?: "click" | "focus" | string;
 }
 
 /**
@@ -69,6 +73,10 @@ type PopoverProps<T extends ElementType> = PopoverOwnProps<T> &
  */
 function Popover<T extends ElementType = 'div'>({
   as,
+  title: titleProp,
+  content: contentProp,
+  placement: placementProp,
+  trigger: triggerProp = "hover",
   children,
   placement = "top",
   ...props
@@ -83,6 +91,9 @@ function Popover<T extends ElementType = 'div'>({
       popoverTriggerList.forEach((el) => {
         new (window as any).bootstrap.Popover(el, {
           placement,
+          title: el.getAttribute("data-bs-title"),
+          content: el.getAttribute("data-bs-content"),
+          container: el.parentElement,
         });
       });
     };
@@ -102,6 +113,11 @@ function Popover<T extends ElementType = 'div'>({
 
   return React.createElement(Component, {
     "data-bs-toggle": "popover",
+    "data-bs-title": titleProp,
+    "data-bs-content": contentProp,
+    "data-bs-placement": placementProp,
+    "data-bs-trigger": triggerProp,
+    "data-bs-html": /<\/?[a-z][\s\S]*>/i.test(contentProp || ''),
     ...props,
     children
   });

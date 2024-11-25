@@ -62,6 +62,7 @@ type TooltipProps<T extends ElementType> = TooltipOwnProps<T> &
 function Tooltip<T extends ElementType = 'div'>({
   as,
   children,
+  title,
   ...props
 }: TooltipProps<T>) {
   const Component = (as || 'div') as ElementType;
@@ -91,6 +92,7 @@ function Tooltip<T extends ElementType = 'div'>({
 
   return React.createElement(Component, {
     "data-bs-toggle": "tooltip",
+    "data-bs-title": title || '',
     ...props,
     children
   });

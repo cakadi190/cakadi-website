@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { PropsWithChildren } from "react";
+import { useEffect, useRef, useState, useCallback, PropsWithChildren } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
@@ -13,9 +12,9 @@ interface CursorProps {
 }
 
 const StyledCursor = styled.div<CursorProps>`
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
+  position: fixed;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
   pointer-events: none;
   border: 1px solid var(--bs-dark);
@@ -25,6 +24,7 @@ const StyledCursor = styled.div<CursorProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
 
   @media (max-width: 992px) {
     display: none;
@@ -43,6 +43,7 @@ const StyledCursor = styled.div<CursorProps>`
       background-color: var(--bs-dark);
 
       svg {
+        font-size: 0.5em;
         display: block;
       }
     `}
@@ -55,30 +56,33 @@ const StyledCursor = styled.div<CursorProps>`
     `}
 `;
 
-export default function Landing({ children }: PropsWithChildren) {
+const useCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
 
+  const handleMouseOver = useCallback((event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    setIsHovering(
+      target.tagName.toLowerCase() === 'button' ||
+      target.tagName.toLowerCase() === 'a' ||
+      target.classList.contains('cursor-hover') ||
+      window.getComputedStyle(target).cursor === 'pointer'
+    );
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      const { scrollX, scrollY } = window;
-      if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-          left: event.clientX + scrollX,
-          top: event.clientY + scrollY,
-          duration: 0.2,
-          ease: "power2.out",
-        });
-      }
-    };
+      if (!cursorRef.current) return;
 
-    const handleMouseOver = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      setIsHovering(
-        target.tagName.toLowerCase() === 'button' ||
-        target.tagName.toLowerCase() === 'a' ||
-        window.getComputedStyle(target).cursor === 'pointer'
-      );
+      const x = Math.min(Math.max(event.clientX, 8), window.innerWidth - 8);
+      const y = Math.min(Math.max(event.clientY, 8), window.innerHeight - 8);
+
+      gsap.to(cursorRef.current, {
+        left: x,
+        top: y,
+        duration: 0.2,
+        ease: "power2.out",
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -88,17 +92,30 @@ export default function Landing({ children }: PropsWithChildren) {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, []);
+  }, [handleMouseOver]);
+
+  return { cursorRef, isHovering };
+};
+
+const CustomCursor = () => {
+  const { cursorRef, isHovering } = useCursor();
 
   return (
-    <div className="d-flex oveflow-hidden flex-column min-vh-100">
+    <StyledCursor ref={cursorRef} isFocus={false} isHovering={isHovering}>
+      <FontAwesomeIcon icon={faArrowUp} />
+    </StyledCursor>
+  );
+};
+
+const Layout = ({ children }: PropsWithChildren) => {
+  return (
+    <div className="d-flex flex-column min-vh-100" id="top">
       <NavigationBar />
-      <StyledCursor ref={cursorRef} isFocus={false} isHovering={isHovering}>
-        <FontAwesomeIcon icon={faArrowUp} size="lg" />
-      </StyledCursor>
-      {children}
+      <CustomCursor />
+      <main className="flex-grow-1 pb-5">{children}</main>
       <FooterSection />
     </div>
   );
-}
+};
 
+export default Layout;
