@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router';
 
 const ProjectsController = () => import('#controllers/web/projects_controller');
 const HomeController = () => import('#controllers/web/home_controller');
+const ContactMeController = () => import('#controllers/web/contact_mes_controller');
 const AuthController = () => import('#controllers/web/auth/authentication_controller');
 const ProxyBlogsController = () => import('#controllers/api/proxy_blogs_controller');
 
@@ -26,7 +27,14 @@ router.group(() => {
     router.get('/:slug', [ProjectsController, 'show']).as('show');
   })
     .prefix('/project')
-    .as('project')
+    .as('project');
+
+  router.group(() => {
+    router.get('/', [ContactMeController, 'index']).as('index');
+    router.get('/process', [ContactMeController, 'process']).as('process');
+  })
+    .prefix('/contact-me')
+    .as('contact-me')
 })
   .as('home');
 
